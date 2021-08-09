@@ -17,7 +17,7 @@ elif [[ $(date '+%H') == 11 ]];then
 elif [[ $(date '+%H') == 13 ]];then
     time=$(($RANDOM%60))" 0 * * *"
 else
-    time=$(($RANDOM%30))" 0,2,5,7,9,11,13 * * *"
+    time=$(($RANDOM%20))" 0,2,5,7,9,11,13 * * *"
 fi
 echo 当前时间为$(date '+%H')时，计划运行时间$time
 sed -i '/schedule/a\    - cron: '$time'' .github/workflows/run.yml
