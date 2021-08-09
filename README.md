@@ -1,4 +1,5 @@
 # mimotion
+![刷步数](https://github.com/xunichanghuan/mimotion/actions/workflows/run.yml/badge.svg)![同步到Gitee](https://github.com/xunichanghuan/mimotion/actions/workflows/sync2gitee.yml/badge.svg)
 
 # 小米运动自动刷步数
 
