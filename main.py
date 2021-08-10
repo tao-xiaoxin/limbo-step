@@ -3,9 +3,6 @@ import requests, time, re,sys, json, random
 
 # 设置开始
 # 用户名（格式为 13800138000）
-user1 = sys.argv[1]
-# 登录密码
-passwd1 = sys.argv[2]
 
 # 酷推skey和server酱sckey和企业微信设置，只用填一个其它留空即可
 skey = sys.argv[3]
@@ -40,7 +37,7 @@ K_dict = {"多云": 0.9, "阴": 0.8, "小雨": 0.7, "中雨": 0.5, "大雨": 0.4
 # 设置运行程序时间点,24小时制（不要设置0，1，2可能会发生逻辑错误），这边设置好云函数触发里也要改成相同的小时运行，与time_list列表对应，如默认：30 0 8,10,13,15,17,19,21 * * * *，不会的改8,10,13,15,17,19,21就行替换成你要运行的时间点，其它复制
 # 默认表示为8点10点13点15点17点19点21点运行,如需修改改time_list列表，如改成：time_list = [7, 9, 13, 15, 17, 19, 20]就表示为7点9点13点15点17点19点20点运行，云函数触发里面也要同步修改
 # 说白了不是刷七次嘛,你希望在什么时候刷,设七个时间点，不要该成0，1，2（就是不要设置0点1点2点运行），其它随便改。如果要刷的次数小于7次多余的时间点不用改保持默认就行如只需要4次就改前4个，但函数触发里面要改成4个的，不能用7个的
-time_list = [8, 10, 13, 15, 17, 19, 21]
+time_list = [20, 10, 13, 15, 17, 19, 21]
 
 # 设置运行结果推送不推送与上面时间一一对应，如：set_push列表内的第一个值与time_list列表内的第一个时间点对应，该值单独控制该时间点的推送与否（默认表示为21点（就是设置的最后一个时间点）推送其余时间运行不推送结果）
 # 也是改列表内的False不推送，True推送，每个对应上面列表的一个时间点，如果要刷的次数小于7次同样改前几个其它默认
@@ -141,7 +138,14 @@ def getBeijinTime():
         print("获取北京时间失败")
         return
     if min_1 != 0 and max_1 != 0:
-        main(min_1, max_1, a)
+        user_mi = sys.argv[1]
+        # 登录密码
+        passwd_mi = sys.argv[2]
+        user_list = user_mi.split('#')
+        passwd_list = passwd_mi.split('#')
+        if len(user_list) == len(passwd_list):
+            for user_mi, passwd_mi in zip(user_list, passwd_list):
+                main(user_mi,passwd_mi,min_1, max_1, a)     
     else:
         print("当前不是主人设定的提交步数时间或者主人设置了0步数呢，本次不提交")
         return
@@ -199,9 +203,9 @@ def login(user, password):
 
 
 # 主函数
-def main(min_1, max_1, a):
-    user = str(user1)
-    password = str(passwd1)
+def main(_user,_passwd,min_1, max_1, a):
+    user = str(_user)
+    password = str(_passwd)
     step = str(step1)
     if user == '' or password == '':
         print("用户名或密码填写有误！")
