@@ -4,13 +4,13 @@ sed -i '/cron:/d' .github/workflows/run.yml
 
 if [[ $(date '+%H') == 0 ]];then
     time=$(($RANDOM%60))" 2 * * *"
-elif [[ $(date '+%H') == 06 ]];then
+elif [[ $(date '+%H') == 02 ]];then
     time=$(($RANDOM%60))" 5 * * *"
-elif [[ $(date '+%H') == 5 ]];then
+elif [[ $(date '+%H') == 05 ]];then
     time=$(($RANDOM%60))" 7 * * *"
-elif [[ $(date '+%H') == 7 ]];then
+elif [[ $(date '+%H') == 07 ]];then
     time=$(($RANDOM%60))" 9 * * *"
-elif [[ $(date '+%H') == 9 ]];then
+elif [[ $(date '+%H') == 09 ]];then
     time=$(($RANDOM%60))" 11 * * *"
 elif [[ $(date '+%H') == 11 ]];then
     time=$(($RANDOM%5))" 13 * * *"
