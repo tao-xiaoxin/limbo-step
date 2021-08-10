@@ -4,7 +4,7 @@ sed -i '/cron:/d' .github/workflows/run.yml
 
 if [[ $(date '+%H') == 0 ]];then
     time=$(($RANDOM%60))" 2 * * *"
-elif [[ $(date '+%H') == 2 ]];then
+elif [[ $(date '+%H') == 06 ]];then
     time=$(($RANDOM%60))" 5 * * *"
 elif [[ $(date '+%H') == 5 ]];then
     time=$(($RANDOM%60))" 7 * * *"
