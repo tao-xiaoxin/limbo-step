@@ -30,7 +30,7 @@
 | TOPARTY |   指定接收消息的部门，部门ID列表，多个接收者用”&#166;”分隔，最多支持100个。当touser为”@all”时填写”@all”，如果没有，填写**NO**|
 | TOTAG |   指定接收消息的标签，标签ID列表，多个接收者用”&#166;”分隔，最多支持100个。当touser为”@all”时填写”@all”，如果没有，填写**NO**|
 | OPEN_GET_WEATHER |   开启根据地区天气情况降低步数**False**关闭,**True**开启|
-| AREA |   设置获取天气的地区（上面开启后必填）如：area = "宁波"，当**OPEN_GET_WEATHER**为**False**时填写**NO**|
+| AREA |   设置获取天气的地区（上面开启后必填）如：**北京**，当**OPEN_GET_WEATHER**为**False**时填写**NO**|
 | GIT_PWD |   GIT_PWD的变量，值为github token，需要有workflow读写权限，避免git push的权限错误。|
 
 ### 三、自定义启动时间多账户(用不上请忽略)
