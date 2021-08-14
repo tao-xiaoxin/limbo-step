@@ -5,11 +5,11 @@ on:
   #  branches: [ main ]
   #pull_request:
   #  branches: [ main ]
-  workflow_dispatch:
   schedule:
     - cron: 8 1 * * *
   watch:
     types: started
+  workflow_dispatch:
 
 jobs:
   build:
