@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-sed -i '/cron:/d' .github/workflows/run.yml
-
 # if [[ $(date '+%H') == 00 ]];then
 #     time=$(($RANDOM%10))" 2 * * *"
 # elif [[ $(date '+%H') == 02 ]];then
@@ -22,6 +20,7 @@ sed -i '/cron:/d' .github/workflows/run.yml
 if [[ $(date '+%H') == 00 or $(date '+%H') == 02 or $(date '+%H') == 05 or $(date '+%H') == 07 or $(date '+%H') == 09 or $(date '+%H') == 11 or $(date '+%H') == 13 ]];then
     time=$(($RANDOM%10))" 0,2,5,7,9,11,13 * * *"
     echo 当前时间为$(date '+%H')时，计划运行时间$time
+    sed -i '/cron:/d' .github/workflows/run.yml
     sed -i '/schedule/a\    - cron: '$time'' .github/workflows/run.yml
     exit 0
 else
