@@ -317,7 +317,9 @@ def get_access_token():
 
 
 def run(msg):
-    if position:
+    if get_access_token != "NO":
+        return
+    elif position:
         data = {
             "touser": touser,
             "toparty": toparty,
@@ -340,13 +342,8 @@ def run(msg):
     else:
         return
 
-
-
-
-
 def main_handler(event, context):
     getBeijinTime()
-
 
 if __name__ == "__main__":
     getBeijinTime()
