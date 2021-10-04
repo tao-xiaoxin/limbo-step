@@ -147,14 +147,14 @@ def getBeijinTime():
         user_list = user_mi.split('#')
         passwd_list = passwd_mi.split('#')
         if len(user_list) == len(passwd_list):
-            msg=""
+            msg_mi=""
             for user_mi, passwd_mi in zip(user_list, passwd_list):
-                msg += main(user_mi,passwd_mi,min_1, max_1, a)
-                print(msg)
-            if msg:
-               push('【小米运动步数修改】', msg)
-               push_wx(msg)
-               run(msg)
+                msg_mi += main(user_mi,passwd_mi,min_1, max_1)
+                print(msg_mi)
+            if a:
+               push('【小米运动步数修改】', msg_mi)
+               push_wx(msg_mi)
+               run(msg_mi)
             else:
                print("此次修改结果不推送")
     else:
@@ -214,7 +214,7 @@ def login(user, password):
 
 
 # 主函数
-def main(_user,_passwd,min_1, max_1, a):
+def main(_user,_passwd,min_1, max_1):
     user = str(_user)
     password = str(_passwd)
     step = str(step1)
