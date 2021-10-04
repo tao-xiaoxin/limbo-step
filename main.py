@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-import requests, time, re,sys, json, random
+import requests, time, datetime, re,sys, json, random
 
 # 设置开始
 # 用户名（格式为 13800138000）
@@ -48,7 +48,10 @@ min_dict = {time_list[0]: 6000, time_list[1]: 10000, time_list[2]: 20000, time_l
 # 最大步数（例如现在设置意思是在8点（你设置的第一个时间点默认8）运行会在1500到2999中随机生成一个数提交（开启气候降低步数会乘系数K）10点3000~4999。。。以此类推，步数范围建议看懂了再改，没看懂直接默认就好）
 max_dict = {time_list[0]: 9999, time_list[1]: 19999, time_list[2]: 29999, time_list[3]: 39999, time_list[4]: 49999, time_list[5]: 59999, time_list[6]: 69999}
 # 设置结束
-now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+#now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+# 北京时间
+time_bj = datetime.datetime.today() + datetime.timedelta(hours=8)
+now = time_bj.strftime("%Y-%m-%d %H:%M:%S")
 headers = {'User-Agent': 'MiFit/5.3.0 (iPhone; iOS 14.7.1; Scale/3.00)'}
 
 
