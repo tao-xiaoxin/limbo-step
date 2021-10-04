@@ -55,6 +55,7 @@ headers = {'User-Agent': 'MiFit/5.3.0 (iPhone; iOS 14.7.1; Scale/3.00)'}
 #获取区域天气情况
 def getWeather():
     if area == "NO":
+        print(area == "NO")
         return
     else:
         global K, type
@@ -150,11 +151,14 @@ def getBeijinTime():
             msg_mi=""
             for user_mi, passwd_mi in zip(user_list, passwd_list):
                 msg_mi += main(user_mi,passwd_mi,min_1, max_1)
-                print(msg_mi)
+                #print(msg_mi)
             if a:
-               push('【小米运动步数修改】', msg_mi)
-               push_wx(msg_mi)
-               run(msg_mi)
+                _add = ""
+                if K != 1.0:
+                    _add =  "由于天气" + type + "，已设置降低步数,系数为" + str(K) + "。\n" 
+               push('【小米运动步数修改】', _add + msg_mi)
+               push_wx(_add + msg_mi)
+               run(_add + msg_mi)
             else:
                print("此次修改结果不推送")
     else:
@@ -256,12 +260,9 @@ def main(_user,_passwd,min_1, max_1):
 
     response = requests.post(url, data=data, headers=head).json()
     # print(response)
-    _add = ""
-    if K != 1.0:
-        _add =  type + "，已设置降低步数,系数为" + str(K) + "。\n" 
-    result = f"[{now}]\n账号：{user}\n由于天气{_add} 修改步数（{step}）\n" + response['message']
+    result = f"[{now}]\n账号：{user}\n修改步数（{step}）[" + response['message'] + "]\n"
     #print(result)
-    return result
+    return _add result
 
 
 # 获取时间戳
@@ -285,6 +286,7 @@ def get_app_token(login_token):
 #发送酷推
 def push(title, content):
     if skey == "NO":
+        print(skey == "NO")
         return
     else:
         url = "https://push.xuthus.cc/send/" + skey
@@ -298,6 +300,7 @@ def push(title, content):
 # 推送server
 def push_wx(desp=""):
     if sckey == 'NO':
+        print(sckey == "NO")
         return
     else:
         server_url = f"https://sc.ftqq.com/{sckey}.send"
@@ -340,8 +343,8 @@ def run(msg):
         data = json.dumps(data)
         req_urls = req_url + get_access_token()
         resp = requests.post(url=req_urls, data=data).text
-        print(resp)
-        print(data)
+        #print(resp)
+        #print(data)
         return resp
     else:
         return
