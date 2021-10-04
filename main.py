@@ -148,17 +148,18 @@ def getBeijinTime():
         user_list = user_mi.split('#')
         passwd_list = passwd_mi.split('#')
         if len(user_list) == len(passwd_list):
-            msg_mi=""
+            if a:
+                msg_mi = ""
+                if K != 1.0:
+                    msg_mi =  "由于天气" + type + "，已设置降低步数,系数为" + str(K) + "。\n" 
+                else:
+                    msg_mi = ""
             for user_mi, passwd_mi in zip(user_list, passwd_list):
                 msg_mi += main(user_mi,passwd_mi,min_1, max_1)
                 #print(msg_mi)
-            if a:
-                _add = ""
-                if K != 1.0:
-                    _add =  "由于天气" + type + "，已设置降低步数,系数为" + str(K) + "。\n" 
-               push('【小米运动步数修改】', _add + msg_mi)
-               push_wx(_add + msg_mi)
-               run(_add + msg_mi)
+               push('【小米运动步数修改】', msg_mi)
+               push_wx(msg_mi)
+               run(msg_mi)
             else:
                print("此次修改结果不推送")
     else:
@@ -262,7 +263,7 @@ def main(_user,_passwd,min_1, max_1):
     # print(response)
     result = f"[{now}]\n账号：{user}\n修改步数（{step}）[" + response['message'] + "]\n"
     #print(result)
-    return _add result
+    return result
 
 
 # 获取时间戳
@@ -343,7 +344,7 @@ def run(msg):
         data = json.dumps(data)
         req_urls = req_url + get_access_token()
         resp = requests.post(url=req_urls, data=data).text
-        #print(resp)
+        print(resp)
         #print(data)
         return resp
     else:
