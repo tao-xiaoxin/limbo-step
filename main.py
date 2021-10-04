@@ -149,7 +149,8 @@ def getBeijinTime():
         if len(user_list) == len(passwd_list):
             msg=""
             for user_mi, passwd_mi in zip(user_list, passwd_list):
-                msg+=main(user_mi,passwd_mi,min_1, max_1, a)
+                msg += main(user_mi,passwd_mi,min_1, max_1, a)
+                ptint(msg)
             if msg:
                push('【小米运动步数修改】', msg)
                push_wx(msg)
@@ -259,7 +260,7 @@ def main(_user,_passwd,min_1, max_1, a):
     if K != 1.0:
         _add =  type + "，已设置降低步数,系数为" + str(K) + "。\n" 
     result = f"[{now}]\n账号：{user}\n由于天气{_add} 修改步数（{step}）\n" + response['message']
-    print(result)
+    #print(result)
     return result
 
 
