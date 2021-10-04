@@ -32,7 +32,7 @@
 | OPEN_GET_WEATHER |   开启根据地区天气情况降低步数**False**关闭,**True**开启|
 | AREA |   设置获取天气的地区（上面开启后必填）如：**北京**，当**OPEN_GET_WEATHER**为**False**时填写**NO**|
 | GIT_PWD |   GIT_PWD的变量，值为github token，需要有workflow读写权限，避免git push的权限错误。|
-| PAT | 此处**PAT**需要申请，教程详见：https://www.jianshu.com/p/bb82b3ad1d11,需要repo和workflow权限,此项必填，用于更新时间 |
+| PAT | 此处**PAT**需要申请，教程详见：https://www.jianshu.com/p/bb82b3ad1d11 ,需要repo和workflow权限,此项必填，用于更新时间 |
 
 ### 三、自定义启动时间多账户(用不上请忽略)
 
