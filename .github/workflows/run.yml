@@ -14,12 +14,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event.repository.owner.id == github.event.sender.id
+    timeout-minutes: 3
+    if: github.event.workflow_run.conclusion == 'success'
 
     steps:
       - name: Checkout codes
         uses: actions/checkout@v2
-        
+        with:
+          token: ${{ secrets.PAT }} #此处PAT需要申请，教程详见：https://www.jianshu.com/p/bb82b3ad1d11,需要repo和workflow权限
       - name: Update system and install zsh
         run: |
           sudo -E apt-get -qq update
@@ -51,10 +53,8 @@ jobs:
       - name: 重置刷新时间
         run: |
           zsh random_cron.sh
-          git_pwd='${{ secrets.GIT_PWD }}'
-          git config --global user.name "xunichanghuan"
-          git config --global user.email "zhpjake@vip.qq.com"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add .
           git commit -m '重置下次刷新时间'
-          git remote set-url origin http://xunichanghuan:${git_pwd}@github.com/xunichanghuan/mimotion.git
           git push
