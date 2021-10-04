@@ -18,11 +18,11 @@
 
 | Secrets |  格式  |
 | -------- | ----- |
-| USER |   小米运动登录账号,仅支持仅支持小米运动账号对应的手机号|
+| USER |   小米运动登录账号,仅支持小米运动账号对应的手机号,不支持小米账号|
 | PWD |   小米运动登录密码,仅支持小米运动账号对应的密码|
 | SKEY |   酷推skey，如无填写**NO**|
 | SCKEY |   server酱sckey，如无填写**NO**|
-| POSITION |   s是否开启企业微信推送**false**关闭,**true**开启|
+| POSITION |   是否开启企业微信推送**false**关闭,**true**开启|
 | CORPID |   企业ID， 登陆企业微信，在我的企业-->企业信息里查看,必填，如果没有，填写**NO**|
 | CORPSECRET |   自建应用，每个自建应用里都有单独的secret,必填，如果没有，填写**NO**|
 | AGENTID |   填写你的应用ID，不加引号，是个整型常数,就是AgentId，如果没有，填写**NO**|
@@ -32,7 +32,7 @@
 | OPEN_GET_WEATHER |   开启根据地区天气情况降低步数**False**关闭,**True**开启|
 | AREA |   设置获取天气的地区（上面开启后必填）如：**北京**，当**OPEN_GET_WEATHER**为**False**时填写**NO**|
 | GIT_PWD |   GIT_PWD的变量，值为github token，需要有workflow读写权限，避免git push的权限错误。|
-| PAT | 此处**PAT**需要申请，教程详见：https://www.jianshu.com/p/bb82b3ad1d11 ,需要repo和workflow权限,此项必填，用于更新时间 |
+| PAT |   此处**PAT**需要申请，教程详见：https://www.jianshu.com/p/bb82b3ad1d11 ,需要repo和workflow权限,此项必填，用于更新时间 |
 
 ### 三、自定义启动时间多账户(用不上请忽略)
 
