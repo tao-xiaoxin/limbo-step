@@ -14,8 +14,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
-    if: github.event.workflow_run.conclusion == 'success'
+    if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
       - name: Checkout codes
