@@ -46,12 +46,3 @@ jobs:
           open_get_weather='${{ secrets.OPEN_GET_WEATHER }}'
           area='${{ secrets.AREA }}'
           python3 main.py ${user} ${passwd} ${skey} ${sckey} ${position} ${corpid} ${corpsecret} ${agentid} ${touser} ${toparty} ${totag} ${open_get_weather} ${area}
-
-      - name: 重置刷新时间
-        run: |
-          zsh random_cron.sh
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m '重置下次刷新时间'
-          git push
