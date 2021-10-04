@@ -150,7 +150,7 @@ def getBeijinTime():
             msg=""
             for user_mi, passwd_mi in zip(user_list, passwd_list):
                 msg += main(user_mi,passwd_mi,min_1, max_1, a)
-                ptint(msg)
+                print(msg)
             if msg:
                push('【小米运动步数修改】', msg)
                push_wx(msg)
