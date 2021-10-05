@@ -263,7 +263,7 @@ def main(_user,_passwd,min_1, max_1):
 
     response = requests.post(url, data=data, headers=head).json()
     # print(response)
-    result = f"[{now}]\n账号：{user}\n修改步数（{step}）[" + response['message'] + "]\n"
+    result = f"[{now}]\n账号：{user[:3]}****{user[7:]}\n修改步数（{step}）[" + response['message'] + "]\n"
     #print(result)
     return result
 
