@@ -325,8 +325,8 @@ def get_access_token():
 
 
 def run(msg):
-    if get_access_token == "NO":
-        print("get_access_token == NO")
+    if POSITION == "false":
+        print("POSITION == "false")
         return
     elif position:
         data = {
