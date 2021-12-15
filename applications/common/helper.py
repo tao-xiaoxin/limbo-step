@@ -101,7 +101,7 @@ class ModelFilter:
         :param value: 值
         """
         if value1 and value2 and value1 != '' and value2 != '':
-            self.filter_field[field_name] = {"data": [value1, value2], "type": self.type_vague}
+            self.filter_field[field_name] = {"data": [value1, value2], "type": self.type_between}
 
     def get_filter(self, model: db.Model):
         """
