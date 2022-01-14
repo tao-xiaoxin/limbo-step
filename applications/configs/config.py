@@ -1,9 +1,10 @@
 import logging
 import os
 
+import redis
+
 
 class BaseConfig:
-
     SYSTEM_NAME = os.getenv('SYSTEM_NAME', 'Pear Admin')
     # 主题面板的链接列表配置
     SYSTEM_PANEL_LINKS = [
@@ -42,6 +43,13 @@ class BaseConfig:
     MYSQL_HOST = os.getenv('MYSQL_HOST') or "127.0.0.1"
     MYSQL_PORT = int(os.getenv('MYSQL_PORT') or 3306)
     MYSQL_DATABASE = os.getenv('MYSQL_DATABASE') or "PearAdminFlask"
+
+    SESSION_USE_SIGNER = True
+    # 指明保存到redis中
+    SESSION_TYPE = "redis"
+    SESSION_REDIS = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=4)
+    # session的有效期，单位：秒
+    PERMANENT_SESSION_LIFETIME = 7200
 
     # mysql 数据库的配置信息
     SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{MYSQL_USERNAME}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DATABASE}"
