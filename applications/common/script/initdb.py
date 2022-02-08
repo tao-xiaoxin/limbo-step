@@ -22,7 +22,7 @@ def is_exist_database():
 def init_database():
     db = pymysql.connect(host=HOST, port=int(PORT), user=USERNAME, password=PASSWORD, charset='utf8mb4')
     cursor1 = db.cursor()
-    sql = "CREATE DATABASE IF NOT EXISTS %s" % DATABASE
+    sql = "CREATE DATABASE IF NOT EXISTS %s CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;" % DATABASE
     res = cursor1.execute(sql)
     db.close()
     return res
