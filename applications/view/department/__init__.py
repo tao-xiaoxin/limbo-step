@@ -1,15 +1,13 @@
 from flask import Blueprint, render_template, request, jsonify
-from marshmallow import INCLUDE
-from webargs.flaskparser import use_args
 
 from applications.common import curd
+from applications.common.utils import validate
 from applications.common.utils.http import success_api, fail_api
 from applications.common.utils.rights import authorize
-from applications.common.utils import validate
+from applications.common.utils.validate import xss_escape
 from applications.extensions import db
 from applications.models import Dept, User
 from applications.schemas import DeptOutSchema
-from applications.schemas.admin_dept import DeptInSchema
 
 dept_bp = Blueprint('dept', __name__, url_prefix='/dept')
 
@@ -56,17 +54,17 @@ def tree():
 
 @dept_bp.post('/save')
 @authorize("admin:dept:add", log=True)
-@use_args(DeptInSchema(), location="json", unknown=True)
-def save(args):
+def save():
+    req_json = request.json
     dept = Dept(
-        parent_id=args['parentId'],
-        dept_name=args['deptName'],
-        sort=args['sort'],
-        leader=args['leader'],
-        phone=args['phone'],
-        email=args['email'],
-        status=args['status'],
-        address=args['address']
+        parent_id=req_json.get('parentId'),
+        dept_name=xss_escape(req_json.get('deptName')),
+        sort=xss_escape(req_json.get('sort')),
+        leader=xss_escape(req_json.get('leader')),
+        phone=xss_escape(req_json.get('phone')),
+        email=xss_escape(req_json.get('email')),
+        status=xss_escape(req_json.get('status')),
+        address=xss_escape(req_json.get('address'))
     )
     r = db.session.add(dept)
     db.session.commit()
@@ -77,7 +75,7 @@ def save(args):
 @authorize("admin:dept:edit", log=True)
 def edit():
     _id = request.args.get("deptId")
-    dept = curd.get_one_by_id(model=Dept,id=_id)
+    dept = curd.get_one_by_id(model=Dept, id=_id)
     return render_template('admin/dept/edit.html', dept=dept)
 
 
@@ -115,7 +113,6 @@ def dis_enable():
 @authorize("admin:dept:edit", log=True)
 def update():
     json = request.json
-    validate.check_data(DeptSchema(unknown=INCLUDE), json)
     id = json.get("deptId"),
     data = {
         "dept_name": validate.xss_escape(json.get("deptName")),
