@@ -1,9 +1,7 @@
 FROM python:3.7-alpine
 
 
-RUN echo http://mirrors.aliyun.com/alpine/v3.12/main > /etc/apk/repositories \
-    && echo http://mirrors.aliyun.com/alpine/v3.12/community >> /etc/apk/repositories \
-    && apk update \
+RUN apk update \
     && apk --update add --no-cache gcc \
     && apk --update add --no-cache g++ \
     && apk --update add --no-cache tzdata \
