@@ -99,7 +99,7 @@ git clone https://gitee.com/pear-admin/pear-admin-flask
 pip install -r requirement\requirement-dev.txt
 
 # 配 置
-.env
+cp .flaskenv .env
 
 ```
 

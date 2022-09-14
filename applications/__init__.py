@@ -26,8 +26,8 @@ def create_app(config_name=None):
     # 注册命令
     init_script(app)
 
-    if os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
-        logo()
+    # if os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
+    #     logo()
 
     return app
 
