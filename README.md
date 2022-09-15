@@ -52,7 +52,7 @@ flask 2.0.1 +	flask-sqlalchemy + 权限验证 + Flask-APScheduler 定时任务 +
 ####  项目结构
 
 ```
-Pear Admin Flask
+limbo-step
 ├─applications  # 应用
 │  ├─configs  # 配置文件
 │  │  ├─ common.py  # 普通配置
