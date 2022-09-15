@@ -44,7 +44,7 @@ flask 2.0.1 +	flask-sqlalchemy + 权限验证 + Flask-APScheduler 定时任务 +
 - [x] 服务监控：监视当前系统CPU、内存、磁盘、python版本,运行时长等相关信息。
 - [x] 文件上传:   图片上传示例
 - [x] 定时任务:   简单的定时任务
-#### Pear Admin Flask 介绍
+#### Pear Admin Flask 项目地址
   [预 览](http://flask.pearadmin.com)   
   [官 网](http://www.pearadmin.com/)   
   [社区](http://forum.pearadmin.com/)
