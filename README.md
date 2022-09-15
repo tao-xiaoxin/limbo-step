@@ -2,10 +2,10 @@
 <br/>
 <br/>
   <h1 align="center">
-    Pear Admin Flask
+    Limbo Microstep
   </h1>
   <h4 align="center">
-    开 箱 即 用 的 Flask 快 速 开 发 平 台
+    千 里 之 行 , 始 于 足 下
   </h4> 
 
   [预 览](http://flask.pearadmin.com)   |   [官 网](http://www.pearadmin.com/)   |   [社区](http://forum.pearadmin.com/)
@@ -29,32 +29,12 @@
 </div>
 
 #### 项目简介
-Pear Admin Flask 基于 Flask 的后台管理系统，拥抱应用广泛的python语言，通过使用本系统，即可快速构建你的功能业务
+本项目基于 Pear Admin Flask 快速构建后台管理系统，拥抱应用广泛的python语言
 
-项目旨在为 python 开发者提供一个后台管理系统的模板，可以快速构建信息管理系统。
-
-Pear Admin Flask 有以下几个版本：					
-
-**[master分支版本 ](https://gitee.com/pear-admin/pear-admin-flask/tree/master/)**
-
+#### 项目架构
 flask 2.0.1 +	flask-sqlalchemy + 权限验证 + Flask-APScheduler 定时任务 + marshmallow 序列化与数据验证
 
-master 分支为主分支，是功能最全、页面最多的分支。
-
-**[mini 分支版本](https://gitee.com/pear-admin/pear-admin-flask/tree/mini/)**
-
-flask 2.0.1 + flask-sqlalchemy + 权限验证 + flask-restful
-
-此版本主要是提供一个最个简的 pear admin flask 快速开发的模板，可以帮助用户快速搭建一个后台管理系统。
-因为一些历史问题，例如 flask-restful 不再继续更新等，此版本不会也再继续更新，而会将精力投入到 main 分支当中去。
-
-如果想使用这个分支进行开发，可以看 https://www.bilibili.com/video/BV1FF411b7bS 进行学习。
-
-**[main 分支版本](https://gitee.com/pear-admin/pear-admin-flask/tree/main/)**
-
-main 分支是对 mini 分支的后续，目前还在开发中。
-
-####  内置功能
+####  Pear Admin Flask 内置功能
 
 - [x] 用户管理：用户是系统操作者，该功能主要完成系统用户配置。
 - [x] 权限管理：配置系统菜单，操作权限，按钮权限标识等。
@@ -64,7 +44,6 @@ main 分支是对 mini 分支的后续，目前还在开发中。
 - [x] 服务监控：监视当前系统CPU、内存、磁盘、python版本,运行时长等相关信息。
 - [x] 文件上传:   图片上传示例
 - [x] 定时任务:   简单的定时任务
-- [ ] 代码生成:   构想中....
 
 ####  项目结构
 
@@ -93,7 +72,7 @@ Pear Admin Flask
 
 ```bash
 # 下 载
-git clone https://gitee.com/pear-admin/pear-admin-flask
+git clone https://github.com/tao-xiaoxin/limbo-step.git
 
 # 安 装
 pip install -r requirement\requirement-dev.txt
