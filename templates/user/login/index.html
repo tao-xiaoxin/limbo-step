@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limbo Microstep-用户登录</title>
+    <!-- 样 式 文 件 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='/login/css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/admin/component/pear/css/pear.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/admin/admin/css/other/login.css') }}"/>
+    <!-- https://fontawesome.com/v5/search?s=solid%2Cbrands -->
+</head>
+<body>
+<img src="{{ url_for('static', filename='/login/img/wave.png') }}" class="wave">
+<div class="container">
+    <div class="img">
+        <img src="{{ url_for('static', filename='/login/img/bg.svg') }}" alt="">
+    </div>
+    <div class="login-content">
+        <form action="index.html">
+            <img src="{{ url_for('static', filename='/login/img/avatar.svg') }}" alt="">
+            <h2 class="title">用户登录</h2>
+            <div class="input-div one">
+                <div class="i"><i class="fas fa-user"></i></div>
+                <div class="div">
+                    <h5>用户名</h5>
+                    <input type="text" class="input">
+                </div>
+            </div>
+            <div class="input-div pass">
+                <div class="i">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="div">
+                    <h5>密码</h5>
+                    <input type="password" class="input">
+                </div>
+            </div>
+<!--            <div class="input-div pass">-->
+<!--                <div class="i">-->
+<!--                    <i class="fas fa-lock"></i>-->
+<!--                </div>-->
+<!--                <div class="div">-->
+<!--                    <h5>验证码</h5>-->
+<!--                    <input name="captcha" hover class="code layui-input layui-input-inline"/>-->
+<!--                    <img src="{{ url_for('passport.get_captcha') }}" class="codeImage" id="captchaImage" width="140"-->
+<!--                         height="44"/>-->
+<!--                </div>-->
+<!--            </div>-->
+            <a href="#">忘记密码?</a>
+            <input type="submit" class="btn" value="登录">
+        </form>
+        <div class="input-div pass">
+                <div class="i">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="div">
+                    <h5>验证码</h5>
+                    <input name="captcha" hover class="code layui-input layui-input-inline"/>
+                    <img src="{{ url_for('passport.get_captcha') }}" class="codeImage" id="captchaImage" width="140"
+                         height="44"/>
+                </div>
+            </div>
+    </div>
+</div>
+<!-- js 部分-->
+<script src="{{ url_for('static', filename='/login/js/main.js') }}"></script>
+<!--    <script src="js/main.js"></script>-->
+</body>
+</html>

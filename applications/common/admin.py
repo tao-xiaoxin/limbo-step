@@ -62,7 +62,10 @@ def make_menu_tree():
 # 生成验证码
 def get_captcha():
     code, image = gen_captcha()
+    print(code)
+    print(image)
     out = BytesIO()
+    print(out)
     session["code"] = code
     image.save(out, 'png')
     out.seek(0)
