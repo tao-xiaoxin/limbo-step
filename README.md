@@ -8,18 +8,18 @@
     千 里 之 行 , 始 于 足 下
   </h4> 
 
-  [预 览](http://flask.pearadmin.com)   |   [官 网](http://www.pearadmin.com/)   |   [社区](http://forum.pearadmin.com/)
+  [预 览](http://flask.pearadmin.com)   |   [官 网](http://www.taoxiaoxin.club/)   |   [社区](http://www.taoxiaoxin.club/)
 
 
 <p align="center">
     <a href="#">
-        <img src="https://img.shields.io/badge/pear%20admin%20flask-1.0.0-green" alt="Pear Admin Layui Version">
+        <img src="https://img.shields.io/badge/Limbo%20Microstep-1.0.0-green" alt="Limbo Microstep Version">
     </a>
     <a href="#">
         <img src="https://img.shields.io/badge/Python-3.6+-green.svg" alt="Python Version">
     </a>
       <a href="#">
-        <img src="https://img.shields.io/badge/Mysql-5.3.2+-green.svg" alt="Mysql Version">
+        <img src="https://img.shields.io/badge/Mysql-5.6.2+-green.svg" alt="Mysql Version">
     </a>
 </p>
 </div>
@@ -44,6 +44,10 @@ flask 2.0.1 +	flask-sqlalchemy + 权限验证 + Flask-APScheduler 定时任务 +
 - [x] 服务监控：监视当前系统CPU、内存、磁盘、python版本,运行时长等相关信息。
 - [x] 文件上传:   图片上传示例
 - [x] 定时任务:   简单的定时任务
+#### Pear Admin Flask 介绍
+  [预 览](http://flask.pearadmin.com)   
+  [官 网](http://www.pearadmin.com/)   
+  [社区](http://forum.pearadmin.com/)
 
 ####  项目结构
 
