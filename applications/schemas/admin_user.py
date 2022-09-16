@@ -11,7 +11,7 @@ class UserOutSchema(ma.Schema):
     enable = fields.Integer()
     create_at = fields.DateTime()
     update_at = fields.DateTime()
-    dept = fields.Method("get_dept")
+    # dept = fields.Method("get_dept")
 
     # def get_dept(self, obj):
     #     if obj.dept_id != None:
