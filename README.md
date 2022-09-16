@@ -25,7 +25,7 @@
 </div>
 
 <div align="center">
-  <img  width="92%" style="border-radius:10px;margin-top:20px;margin-bottom:20px;box-shadow: 2px 0 6px gray;" src="https://images.gitee.com/uploads/images/2020/1019/104805_042b888c_4835367.png" />
+  <img  width="92%" style="border-radius:10px;margin-top:20px;margin-bottom:20px;box-shadow: 2px 0 6px gray;" src="https://s2.loli.net/2022/09/16/GWqYclejZFTvyEm.jpg" />
 </div>
 
 #### 项目简介
@@ -45,9 +45,9 @@ flask 2.0.1 +	flask-sqlalchemy + 权限验证 + Flask-APScheduler 定时任务 +
 - [x] 文件上传:   图片上传示例
 - [x] 定时任务:   简单的定时任务
 #### Pear Admin Flask 项目地址
-  [预 览](http://flask.pearadmin.com)   
-  [官 网](http://www.pearadmin.com/)   
-  [社区](http://forum.pearadmin.com/)
+  [Pear Admin 预 览](http://flask.pearadmin.com)   
+  [Pear Admin 官 网](http://www.pearadmin.com/)   
+  [Pear Admin 社区](http://forum.pearadmin.com/)
 
 ####  项目结构
 
@@ -67,6 +67,7 @@ limbo-step
 ├─docs  # 文档说明（占坑）
 ├─migrations  # 迁移文件记录
 ├─requirement  # 依赖文件
+├─libs # 第三方包
 ├─test # 测试文件夹（占坑）
 └─.env # 项目的配置文件
 
