@@ -15,3 +15,4 @@ python-dotenv==0.19.1
 webargs==8.0.1
 Flask-Login==0.5.0
 Flask==2.0.1
+Flask-Script==2.0.6
