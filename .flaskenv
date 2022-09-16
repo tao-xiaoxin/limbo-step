@@ -6,7 +6,7 @@ FLASK_RUN_HOST = 127.0.0.1
 FLASK_RUN_PORT = 5000
 
 # pear admin flask配置
-SYSTEM_NAME = Pear Admin
+SYSTEM_NAME = Limbo Microstep
 
 # MySql配置信息
 MYSQL_HOST=127.0.0.1
