@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div align="center">
 <br/>
 <br/>
@@ -46,9 +45,9 @@ flask 2.0.1 +	flask-sqlalchemy + 权限验证 + Flask-APScheduler 定时任务 +
 - [x] 文件上传:   图片上传示例
 - [x] 定时任务:   简单的定时任务
 #### Pear Admin Flask 项目地址
-  [Pear Admin 预 览](http://flask.pearadmin.com)   
-  [Pear Admin 官 网](http://www.pearadmin.com/)   
-  [Pear Admin 社区](http://forum.pearadmin.com/)
+  + [Pear Admin 预 览 : http://flask.pearadmin.com](http://flask.pearadmin.com)
+  + [Pear Admin 官 网 : http://www.pearadmin.com](http://www.pearadmin.com/)   
+  + [Pear Admin 社区 : http://forum.pearadmin.com](http://forum.pearadmin.com/)
 
 ####  项目结构
 
@@ -73,6 +72,8 @@ limbo-step
 └─.env # 项目的配置文件
 
 ```
+### Limbo Microstep 部署指南
+<br />
 
 #### 项目安装
 
@@ -146,22 +147,23 @@ flask new --type view --name test/a
 | ![](docs/assets/1.jpg)  | ![](docs/assets/2.jpg)  |
 | ![](docs/assets/3.jpg)|  ![](docs/assets/4.jpg)   |
 | ![](docs/assets/5.jpg) |  ![](docs/assets/6.jpg)   |
-=======
-# mimotion
-![ 刷步数](https://github.com/xunichanghuan/mimotion/actions/workflows/run.yml/badge.svg)
-![同步到Gitee](https://github.com/xunichanghuan/mimotion/actions/workflows/sync2gitee.yml/badge.svg)
-[![GitHub forks](https://img.shields.io/github/forks/xunichanghuan/mimotion?style=flat-square)](https://github.com/xunichanghuan/mimotion/network)
-[![GitHub stars](https://img.shields.io/github/stars/xunichanghuan/mimotion?style=flat-square)](https://github.com/xunichanghuan/mimotion/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/xunichanghuan/mimotion?style=flat-square)](https://github.com/xunichanghuan/mimotion/issues)
 
-# 小米运动自动刷步数
+[comment]: <> (=======)
 
-> 小米运动自动刷步数
+[comment]: <> (# mimotion)
 
-## Github Actions 部署指南
+[comment]: <> (![ 刷步数]&#40;https://github.com/xunichanghuan/mimotion/actions/workflows/run.yml/badge.svg&#41;)
 
-### 一、Fork 此仓库
+[comment]: <> (![同步到Gitee]&#40;https://github.com/xunichanghuan/mimotion/actions/workflows/sync2gitee.yml/badge.svg&#41;)
 
+[comment]: <> ([![GitHub forks]&#40;https://img.shields.io/github/forks/xunichanghuan/mimotion?style=flat-square&#41;]&#40;https://github.com/xunichanghuan/mimotion/network&#41;)
+
+[comment]: <> ([![GitHub stars]&#40;https://img.shields.io/github/stars/xunichanghuan/mimotion?style=flat-square&#41;]&#40;https://github.com/xunichanghuan/mimotion/stargazers&#41;)
+
+[comment]: <> ([![GitHub issues]&#40;https://img.shields.io/github/issues/xunichanghuan/mimotion?style=flat-square&#41;]&#40;https://github.com/xunichanghuan/mimotion/issues&#41;)
+
+
+## Limbo Microstep 使用指南
 ### 二、设置账号密码
 > 添加名为  **USER**、**PWD**、**SKEY**、**SCKEY**、**POSITION** 、**CORPID**、**CORPSECRET**、**AGENTID**、**TOUSER**、**TOPARTY**、**TOTAG**、**OPEN_GET_WEATHER**、**AREA**的变量: Settings-->Secrets-->New secret  
 
@@ -169,7 +171,6 @@ flask new --type view --name test/a
 | -------- | ----- |
 | USER |   小米运动登录账号,仅支持小米运动账号对应的手机号,不支持小米账号|
 | PWD |   小米运动登录密码,仅支持小米运动账号对应的密码|
-| SKEY |   酷推skey，如无填写**NO**|
 | SCKEY |   server酱sckey，如无填写**NO**|
 | POSITION |   是否开启企业微信推送**false**关闭,**true**开启|
 | CORPID |   企业ID， 登陆企业微信，在我的企业-->企业信息里查看,必填，如果没有，填写**NO**|
@@ -179,8 +180,6 @@ flask new --type view --name test/a
 | TOPARTY |   指定接收消息的部门，部门ID列表，多个接收者用”&#166;”分隔，最多支持100个。当touser为”@all”时填写”@all”，如果没有，填写**NO**|
 | TOTAG |   指定接收消息的标签，标签ID列表，多个接收者用”&#166;”分隔，最多支持100个。当touser为”@all”时填写”@all”，如果没有，填写**NO**|
 | OPEN_GET_WEATHER |   开启根据地区天气情况降低步数**False**关闭,**True**开启|
-| AREA |   设置获取天气的地区（上面开启后必填）如：**北京**，当**OPEN_GET_WEATHER**为**False**时填写**NO**|
-| PAT |   此处**PAT**需要申请，值为github token，教程详见：https://www.jianshu.com/p/bb82b3ad1d11 ,需要repo和workflow权限,此项必填，避免git push的权限错误。 |
 
 ### 三、自定义启动时间多账户(用不上请忽略)
 
@@ -218,11 +217,6 @@ flask new --type view --name test/a
 
 7. 请各位在使用时Fork[主分支](https://github.com/xunichanghuan/mimotion/)，防止出现不必要的bug.
 
-8. TG推送教程 [点我](./TG_PUSH.md)
+[comment]: <> (8. TG推送教程 [点我]&#40;./TG_PUSH.md&#41;)
 
 9. 请注意，账号不是 [小米账号]，而是 [小米运动] 的账号。
-
-## 历史Star数
-
-[![Stargazers over time](https://starchart.cc/xunichanghuan/mimotion.svg)](https://starchart.cc/xunichanghuan/mimotion)
->>>>>>> d0ed45a163010bc8ee9360eb50f85e7c072beda5
