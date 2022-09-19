@@ -24,13 +24,12 @@ def login_post():
     req = request.form
     print(req)
     email = req.get('email')
-    if not re.match(r'^[0-9a-za-z_]{0,19}@[0-9a-za-z]{1,13}\.[com,cn,net]{1,3}$', email):
-        return fail_api(msg="请输入正确的邮箱账号!")
     password = req.get('password')
     code = req.get('captcha').__str__().lower()
 
-    if not email or not password or not code:
-        return fail_api(msg="请输入用户名或密码!")
+    if not email or not password or not code or not re.match(
+            r'^[0-9a-za-z_]{0,19}@[0-9a-za-z]{1,13}\.[com,cn,net]{1,3}$', email):
+        return fail_api(msg="请输入正确的邮箱账号或密码!")
     s_code = session.get("code", None)
     session["code"] = None
 

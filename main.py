@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-import requests, time, datetime, re,sys, json, random
+import requests, time, datetime, re, sys, json, random
 
 # 设置开始
 # 用户名（格式为 13800138000）
@@ -44,18 +44,20 @@ time_list = [8, 10, 13, 15, 17, 19, 21]
 set_push = [True, True, True, True, True, True, True]
 
 # 最小步数（如果只需要刷步的次数少于7次就将该次数以后的步数全都改成0，如：time_list[3]: 0，表示第五次开始不运行或者直接云函数触发里面不在该时间调用均可（建议用后者））
-min_dict = {time_list[0]: 6000, time_list[1]: 10000, time_list[2]: 20000, time_list[3]: 30000, time_list[4]: 40000, time_list[5]: 50000, time_list[6]: 60000}
+min_dict = {time_list[0]: 6000, time_list[1]: 10000, time_list[2]: 20000, time_list[3]: 30000, time_list[4]: 40000,
+            time_list[5]: 50000, time_list[6]: 60000}
 # 最大步数（例如现在设置意思是在8点（你设置的第一个时间点默认8）运行会在1500到2999中随机生成一个数提交（开启气候降低步数会乘系数K）10点3000~4999。。。以此类推，步数范围建议看懂了再改，没看懂直接默认就好）
-max_dict = {time_list[0]: 9999, time_list[1]: 19999, time_list[2]: 29999, time_list[3]: 39999, time_list[4]: 49999, time_list[5]: 59999, time_list[6]: 69999}
+max_dict = {time_list[0]: 9999, time_list[1]: 19999, time_list[2]: 29999, time_list[3]: 39999, time_list[4]: 49999,
+            time_list[5]: 59999, time_list[6]: 69999}
 # 设置结束
-#now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+# now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 # 北京时间
 time_bj = datetime.datetime.today() + datetime.timedelta(hours=8)
 now = time_bj.strftime("%Y-%m-%d %H:%M:%S")
 headers = {'User-Agent': 'MiFit/5.3.0 (iPhone; iOS 14.7.1; Scale/3.00)'}
 
 
-#获取区域天气情况
+# 获取区域天气情况
 def getWeather():
     if area == "NO":
         print(area == "NO")
@@ -89,7 +91,7 @@ def getWeather():
             print("获取天气情况出错")
 
 
-#获取北京时间确定随机步数&启动主函数
+# 获取北京时间确定随机步数&启动主函数
 def getBeijinTime():
     global K, type
     K = 1.0
@@ -101,7 +103,7 @@ def getBeijinTime():
     r = requests.get(url=url, headers=hea)
     if r.status_code == 200:
         result = r.text
-        #print(result)
+        # print(result)
         if "nhrs=" + str(time_list[0]) in result:
             a = set_push[0]
             min_1 = min_dict[time_list[0]]
@@ -150,20 +152,20 @@ def getBeijinTime():
         passwd_mi = sys.argv[2]
         user_list = user_mi.split('#')
         passwd_list = passwd_mi.split('#')
-        if len(user_list) == len(passwd_list):        
+        if len(user_list) == len(passwd_list):
             if K != 1.0:
-                msg_mi =  "由于天气" + type + "，已设置降低步数,系数为" + str(K) + "。\n" 
+                msg_mi = "由于天气" + type + "，已设置降低步数,系数为" + str(K) + "。\n"
             else:
                 msg_mi = ""
             for user_mi, passwd_mi in zip(user_list, passwd_list):
-                msg_mi += main(user_mi,passwd_mi,min_1, max_1)
-                #print(msg_mi)
+                msg_mi += main(user_mi, passwd_mi, min_1, max_1)
+                # print(msg_mi)
             if a:
-               push('【小米运动步数修改】', msg_mi)
-               push_wx(msg_mi)
-               run(msg_mi)
+                push('【小米运动步数修改】', msg_mi)
+                push_wx(msg_mi)
+                run(msg_mi)
             else:
-               print("此次修改结果不推送")
+                print("此次修改结果不推送")
     else:
         print("当前不是主人设定的提交步数时间或者主人设置了0步数呢，本次不提交")
         return
@@ -221,7 +223,7 @@ def login(user, password):
 
 
 # 主函数
-def main(_user,_passwd,min_1, max_1):
+def main(_user, _passwd, min_1, max_1):
     user = str(_user)
     password = str(_passwd)
     step = str(step1)
@@ -264,7 +266,7 @@ def main(_user,_passwd,min_1, max_1):
     response = requests.post(url, data=data, headers=head).json()
     # print(response)
     result = f"[{now}]\n账号：{user[:3]}****{user[7:]}\n修改步数（{step}）[" + response['message'] + "]\n"
-    #print(result)
+    # print(result)
     return result
 
 
@@ -286,7 +288,7 @@ def get_app_token(login_token):
     return app_token
 
 
-#发送酷推
+# 发送酷推
 def push(title, content):
     if skey == "NO":
         print(skey == "NO")
@@ -344,13 +346,15 @@ def run(msg):
         req_urls = req_url + get_access_token()
         resp = requests.post(url=req_urls, data=data).text
         print(resp)
-        #print(data)
+        # print(data)
         return resp
     else:
         return
 
+
 def main_handler(event, context):
     getBeijinTime()
+
 
 if __name__ == "__main__":
     getBeijinTime()

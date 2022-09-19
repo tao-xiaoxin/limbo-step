@@ -12,11 +12,11 @@ class User(db.Model, UserMixin):
     avatar = db.Column(db.String(255), comment='头像', default="/static/admin/admin/images/avatar.jpg")
     remark = db.Column(db.String(255), comment='备注')
     password_hash = db.Column(db.String(128), comment='哈希密码')
-    enable = db.Column(db.Integer, default=0, comment='启用')
+    enable = db.Column(db.Integer, default=1, comment='启用')
     # dept_id = db.Column(db.Integer, comment='部门id', nullable=True)
     create_at = db.Column(db.DateTime, default=datetime.datetime.now, comment='创建时间')
     update_at = db.Column(db.DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now, comment='创建时间')
-    # role = db.relationship('Role', secondary="admin_user_role", backref=db.backref('user'), lazy='dynamic')
+    role = db.relationship('Role', secondary="admin_user_role", backref=db.backref('user'), lazy='dynamic')
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
