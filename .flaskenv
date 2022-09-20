@@ -21,6 +21,11 @@ REDIS_HOST=127.0.0.1
 REDIS_PORT=6379
 REDIS_PASSWORD=123456
 
+# 百度内容审核配置
+BAIDU_POWER=False   # 内容审核是否开启
+BAIDU_API_KEY=''    # 百度应用APPID
+BAIDU_API_KEY=''    # 百度应用SECRETKEY
+
 # 密钥配置(记得改)
 SECRET_KEY='pear-admin-flask'
 
