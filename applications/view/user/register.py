@@ -33,15 +33,13 @@ def register_post():
     password = req.get('password')
     username = req.get('username')
     code = req.get('captcha').__str__().lower()
-    if not (3 >= len(username) <= 18):
+    if not (2 < len(username) < 19):
         return fail_api(msg="用户名长度在3~18之间!")
     if not email or not password or not username or not code or not re.match(
             r'^[0-9a-za-z_]{0,19}@[0-9a-za-z]{1,13}\.[com,cn,net]{1,3}$', email):
         return fail_api(msg="请输入正确的邮箱账号用户名或者密码!")
-    if not re.match(
-            r'^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\W_]+$)(?![a-z0-9]+$)(?![a-z\W_]+$)(?![0-9\W_]+$)[a-zA-Z0-9\W_]{8,18}$',
-            password) or not (18 <= len(password) >= 8):
-        return fail_api(msg="密码必须要包含大写字母,小写字母,数字,特殊字符(至少三种),且长度在8~18之间!")
+    if not re.search('\d.*[A-Z]|[a-z].*\d', password) or not (18 <= len(password) >= 8):
+        return fail_api(msg="密码必须要包含小写字母,数字,且长度在8~18之间!")
     s_code = session.get("code", None)
     session["code"] = None
     if not all([code, s_code]):
@@ -52,7 +50,7 @@ def register_post():
         return fail_api(msg="用户已经存在")
     # 开启百度内容审核验证
     if config.BAIDU_POWER:
-        get_conclusion(username)
+        result = get_conclusion(username)
     # 每日一言
     remark = str(get_briefly()).split("/")[-1]
     # user = User(username=username, email=email, remark=remark)
