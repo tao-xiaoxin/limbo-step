@@ -61,7 +61,7 @@ class BaseConfig:
     MAIL_USERNAME = os.getenv('MAIL_USERNAME') or '123@qq.com'
     MAIL_PASSWORD = os.getenv('MAIL_PASSWORD') or 'XXXXX'  # 生成的授权码
     # 默认发件人的邮箱,这里填写和MAIL_USERNAME一致即可
-    MAIL_DEFAULT_SENDER = ('Limbo Microstep', os.getenv('MAIL_USERNAME') or '123@qq.com')
+    MAIL_DEFAULT_SENDER = ('Limbo MicroStep', os.getenv('MAIL_USERNAME') or '123@qq.com')
 
     # 百度内容审核配置
     BAIDU_POWER = os.getenv("BAIDU_POWER") or False  # 内容审核是否开启
