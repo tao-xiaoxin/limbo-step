@@ -33,11 +33,11 @@ def login():
 @passport_bp.post('/login')
 def login_post():
     req = request.form
-    username = req.get('username')
+    email = req.get('email')
     password = req.get('password')
     code = req.get('captcha').__str__().lower()
 
-    if not username or not password or not code:
+    if not email or not password or not code:
         return fail_api(msg="用户名或密码没有输入")
     s_code = session.get("code", None)
     session["code"] = None
@@ -47,7 +47,7 @@ def login_post():
 
     if code != s_code:
         return fail_api(msg="验证码错误")
-    user = User.query.filter_by(username=username).first()
+    user = User.query.filter_by(email=email).first()
 
     if not user:
         return fail_api(msg="不存在的用户")
@@ -55,7 +55,7 @@ def login_post():
     if user.enable == 0:
         return fail_api(msg="用户被暂停使用")
 
-    if username == user.username and user.validate_password(password):
+    if email == user.email and user.validate_password(password):
         # 登录
         login_user(user)
         # 记录登录日志
