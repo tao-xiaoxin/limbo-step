@@ -119,9 +119,9 @@
         {% if authorize("admin:user:remove") %}
           { type: 'checkbox' },
         {% endif %}
-        { title: '姓名', field: 'realname', align: 'center', width: 110 },
-        { title: '账号', field: 'username', align: 'center' },
-        { title: '部门', field: 'dept', align: 'center' },
+        { title: '用户名', field: 'username', align: 'center', width: 110 },
+        { title: '账号', field: 'email', align: 'center' },
+        // { title: '部门', field: 'dept', align: 'center' },
         { title: '启用', field: 'enable', align: 'center', templet: '#user-enable', width: 120 },
         { title: '注册时间', field: 'create_at', templet: '#user-createTime', align: 'center' },
         { title: '更新时间', field: 'update_at', templet: '#user-updateTime', align: 'center' },

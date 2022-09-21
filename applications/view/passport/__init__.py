@@ -1,6 +1,6 @@
 from flask import Blueprint, session, redirect, url_for, render_template, request
 from flask_login import current_user, login_user, login_required, logout_user
-
+from applications.common.utils import send_mail
 from applications.common import admin as index_curd
 from applications.common.admin_log import login_log
 from applications.common.utils.http import fail_api, success_api
@@ -19,6 +19,8 @@ def get_captcha():
     resp, code = index_curd.get_captcha()
     session["code"] = code
     return resp
+
+
 
 
 # 登录

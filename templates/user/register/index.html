@@ -30,8 +30,9 @@
                class="layui-input"/>
     </div>
     <div class="layui-form-item">
-        <input placeholder="验证码 : " name="captcha" hover class="code layui-input layui-input-inline"/>
+        <input placeholder="验证码 : " name="code" hover class="code layui-input layui-input-inline"/>
         <img src="{{ url_for('passport.get_captcha') }}" class="codeImage" id="captchaImage"/>
+<!--        <button class="codeImage">发送</button>-->
     </div>
     <div class="layui-form-item">
         <a href="/user/login" target="_blank">已有账户,前去登录?</a>

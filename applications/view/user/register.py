@@ -7,11 +7,11 @@ from applications.common import admin as index_curd
 from applications.common.admin_log import login_log
 from applications.common.utils.http import fail_api, success_api
 from applications.models import User
+from applications.extensions import db
 from applications.libs.briefly.briefly import get_briefly
 from applications.libs import get_briefly, get_conclusion
-from applications.configs import BaseConfig as configs
+from applications.configs import configs
 
-config = configs()
 user_register = Blueprint('user_register', __name__, url_prefix='/user/register')
 
 
@@ -32,14 +32,15 @@ def register_post():
     email = req.get('email')
     password = req.get('password')
     username = req.get('username')
-    code = req.get('captcha').__str__().lower()
+    # code = req.get('captcha').__str__().lower()
+    code = req.get('code').__str__().lower()
     if not (2 < len(username) < 19):
         return fail_api(msg="用户名长度在3~18之间!")
     if not email or not password or not username or not code or not re.match(
             r'^[0-9a-za-z_]{0,19}@[0-9a-za-z]{1,13}\.[com,cn,net]{1,3}$', email):
         return fail_api(msg="请输入正确的邮箱账号用户名或者密码!")
-    if not re.search('\d.*[A-Z]|[a-z].*\d', password) or not (18 <= len(password) >= 8):
-        return fail_api(msg="密码必须要包含小写字母,数字,且长度在8~18之间!")
+    if not re.match(r'^(?:(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])).*$', password) or not (7 < len(password) < 19):
+        return fail_api(msg="密码必须要包含英文(大小写),数字,且长度在8~18之间!")
     s_code = session.get("code", None)
     session["code"] = None
     if not all([code, s_code]):
@@ -48,11 +49,13 @@ def register_post():
         return fail_api(msg="验证码错误")
     if bool(User.query.filter_by(email=email).count()):
         return fail_api(msg="用户已经存在")
-    # 开启百度内容审核验证
-    if config.BAIDU_POWER:
-        result = get_conclusion(username)
-    # 每日一言
-    remark = str(get_briefly()).split("/")[-1]
+    # # 开启百度内容审核验证
+    # if config.BAIDU_POWER:
+    #     conclusion = get_conclusion(username)
+    #     if conclusion["conclusion"] != "合规":
+    #         return fail_api(msg="用户名不合规,请更改昵称!")
+    # # 每日一言
+    # remark = str(get_briefly()).split("/")[-1]
     # user = User(username=username, email=email, remark=remark)
     # user.set_password(password)
     # db.session.add(user)
@@ -65,3 +68,49 @@ def register_post():
     # # 存入权限
     # index_curd.add_auth_session()
     return success_api(msg="注册成功!")
+
+
+# # 绑定用户信息
+# @user_register.post('/build')
+# def register_post():
+#     req = request.form
+#     print(req)
+#     email = req.get('email')
+#     password = req.get('password')
+#     username = req.get('username')
+#     # code = req.get('captcha').__str__().lower()
+#     code = req.get('code').__str__().lower()
+#     if not (2 < len(username) < 19):
+#         return fail_api(msg="用户名长度在3~18之间!")
+#     if not email or not password or not username or not code or not re.match(
+#             r'^[0-9a-za-z_]{0,19}@[0-9a-za-z]{1,13}\.[com,cn,net]{1,3}$', email):
+#         return fail_api(msg="请输入正确的邮箱账号用户名或者密码!")
+#     if not re.match(r'^(?:(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])).*$', password) or not (7 < len(password) < 19):
+#         return fail_api(msg="密码必须要包含英文(大小写),数字,且长度在8~18之间!")
+#     s_code = session.get("code", None)
+#     session["code"] = None
+#     if not all([code, s_code]):
+#         return fail_api(msg="参数错误")
+#     if code != s_code:
+#         return fail_api(msg="验证码错误")
+#     if bool(User.query.filter_by(email=email).count()):
+#         return fail_api(msg="用户已经存在")
+#     # # 开启百度内容审核验证
+#     # if config.BAIDU_POWER:
+#     #     conclusion = get_conclusion(username)
+#     #     if conclusion["conclusion"] != "合规":
+#     #         return fail_api(msg="用户名不合规,请更改昵称!")
+#     # # 每日一言
+#     # remark = str(get_briefly()).split("/")[-1]
+#     # user = User(username=username, email=email, remark=remark)
+#     # user.set_password(password)
+#     # db.session.add(user)
+#     # db.session.commit()
+#     # # 注册成功后直接登录后台
+#     # # 登录
+#     # login_user(user)
+#     # # 记录登录日志
+#     # login_log(request, uid=user.id, is_access=True)
+#     # # 存入权限
+#     # index_curd.add_auth_session()
+#     return success_api(msg="注册成功!")

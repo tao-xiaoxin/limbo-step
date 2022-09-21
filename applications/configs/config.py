@@ -66,7 +66,10 @@ class BaseConfig:
     # 百度内容审核配置
     BAIDU_POWER = os.getenv("BAIDU_POWER") or False  # 内容审核是否开启
     BAIDU_API_KEY = os.getenv("BAIDU_API_KEY") or ""  # 百度应用APPID
-    BAIDU_SECRET_KEY = os.getenv("BAIDU_API_KEY") or ''  # 百度应用SecretKey
+    BAIDU_SECRET_KEY = os.getenv("BAIDU_SECRET_KEY") or ''  # 百度应用SecretKey
+
+    # 卡密过期时长
+    CARD_DURATION = os.getenv("CARD_DURATION") or 3
 
 
 class TestingConfig(BaseConfig):
@@ -94,3 +97,5 @@ config = {
     'testing': TestingConfig,
     'production': ProductionConfig
 }
+
+configs = BaseConfig()

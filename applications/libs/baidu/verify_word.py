@@ -18,8 +18,8 @@ def get_access_token():
         'client_id': baidu_config.BAIDU_API_KEY,  # 百度云应用的AK
         'client_secret': baidu_config.BAIDU_SECRET_KEY,  # 百度云应用的SK
     }
-    access_token = requests.get(url=url, params=data).json()['access_token']
-    return access_token
+    response = requests.get(url=url, params=data).json()
+    return response['access_token']
 
 
 def get_conclusion(text):
