@@ -36,6 +36,7 @@ class BaseConfig:
     REDIS_HOST = os.getenv('REDIS_HOST') or "127.0.0.1"
     REDIS_PORT = int(os.getenv('REDIS_PORT') or 6379)
     REDIS_PASSWORD = os.getenv("REDIS_PASSWORD") or "123456"
+    CACHE_TYPE = os.getenv("CACHE_TYPE") or "simple"
 
     # Redis 配置信息
     REDIS_URL = f'redis://:{REDIS_PASSWORD or ""}@{REDIS_HOST}:6380'
