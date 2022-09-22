@@ -61,7 +61,6 @@ db.sqlite3
 # Flask stuff:
 instance/
 .webassets-cache
-migrations/versions/*
 
 # Scrapy stuff:
 .scrapy
