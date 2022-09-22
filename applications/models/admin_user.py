@@ -16,8 +16,6 @@ class Card(db.Model):
                             comment="失效时间")
     user_id = db.Column(db.Integer, db.ForeignKey('admin_user.id'), comment="用户绑定的卡密")
     user = db.relationship('User', backref='card', uselist=False, )
-    is_delete = db.Column(db.Boolean, default=False, )  # 假删除
-    # user_id = db.Column(db.Integer, db.ForeignKey('admin_user.id'), comment="用户绑定的卡密", unique=True)
 
 
 class User(db.Model, UserMixin):
