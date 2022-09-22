@@ -125,6 +125,14 @@ python -m venv venv
 # 初 始 化 数 据 库
 
 flask init
+
+# 数据库迁移
+
+flask db migrate
+
+# 同步数据库
+
+flask db upgrade
 ```
 
 执行 flask run 命令启动项目
