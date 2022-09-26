@@ -29,10 +29,9 @@ class User(db.Model, UserMixin):
     enable = db.Column(db.Integer, default=1, comment='启用')
     create_at = db.Column(db.DateTime, default=datetime.datetime.now, comment='创建时间')
     update_at = db.Column(db.DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now, comment='创建时间')
-    is_superuser = db.Column(db.Boolean, default=False, comment="是否超级用户")
+    # is_superuser = db.Column(db.Boolean, default=False, comment="是否超级用户")
     openid = db.Column(db.String(255), nullable=True, comment="微信登录openid")
-
-    # card = db.relationship('Card', uselist=False, backref="user")
+    role = db.relationship('Role', secondary="admin_user_role", backref=db.backref('user'), lazy='dynamic')
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 

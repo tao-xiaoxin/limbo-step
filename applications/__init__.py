@@ -27,7 +27,8 @@ def create_app(config_name=None):
     init_script(app)
 
     if os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
-        logo()
+        # logo()
+        ...
 
     return app
 
