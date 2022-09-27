@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 from applications.configs import configs
 
 
-class Card(db.Model):
+class User2Card(db.Model):
     __tablename__ = 'file_card'
     card_id = db.Column(db.String(180), primary_key=True, comment='卡密ID', )
     enable = db.Column(db.Boolean, comment='是否启用', default=True)
@@ -18,6 +18,15 @@ class Card(db.Model):
     user = db.relationship('User', backref='card', uselist=False, )
 
 
+class User2Account(db.Model):
+    __tablename__ = 'file_user2account'
+    account_id = db.Column(db.Integer, primary_key=True, autoincrement=True, comment='用户ID')
+    phone = db.Column(db.Integer, comment='小米登录手机号')
+    password = db.Column(db.String(125),comment='小米登录密码')
+    user_id = db.Column(db.Integer, db.ForeignKey('admin_user.id'), comment="操作用户id")
+    create_time = db.Column(db.DateTime, default=datetime.datetime.now, comment='创建时间')
+    is_activate = db.Column(db.Integer,default=1,comment='小米登录密码')
+    
 class User(db.Model, UserMixin):
     __tablename__ = 'admin_user'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True, comment='用户ID')
@@ -29,9 +38,9 @@ class User(db.Model, UserMixin):
     enable = db.Column(db.Integer, default=1, comment='启用')
     create_at = db.Column(db.DateTime, default=datetime.datetime.now, comment='创建时间')
     update_at = db.Column(db.DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now, comment='创建时间')
-    # is_superuser = db.Column(db.Boolean, default=False, comment="是否超级用户")
     openid = db.Column(db.String(255), nullable=True, comment="微信登录openid")
     role = db.relationship('Role', secondary="admin_user_role", backref=db.backref('user'), lazy='dynamic')
+    account = db.relationship("User2Account", backref="user")
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 

@@ -2,7 +2,7 @@ import datetime
 from applications.extensions import db
 
 class AdminLog(db.Model):
-    __tablename__ = 'admin_admin_log'
+    __tablename__ = 'system_log'
     id = db.Column(db.Integer, primary_key=True)
     method = db.Column(db.String(10))
     uid = db.Column(db.Integer)

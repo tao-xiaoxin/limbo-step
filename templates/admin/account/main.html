@@ -16,7 +16,7 @@
     {% if authorize("admin:task:add") %}
         <button class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
             <i class="layui-icon layui-icon-add-1"></i>
-            新增
+            新增账号
         </button>
     {% endif %}
 </script>
@@ -57,12 +57,11 @@
         {% if authorize("admin:role:remove") %}
           { type: 'checkbox' },
         {% endif %}
-        { title: 'ID', field: 'id', align: 'center', width: 100 },
-        { title: '函数', field: 'func', align: 'center' },
-        { title: '名称', field: 'name', align: 'center' },
-        { title: '开始时间', field: 'start_date', align: 'center',templet: '#task-createTime'},
-        { title: '是否运行', field: 'next_run_time', align: 'center', templet: '#task-status' },
-        { title: '类型', field: 'trigger', align: 'center' },
+        { title: '序号', field: 'id', align: 'center', width: 100 },
+        { title: '账号', field: 'func', align: 'center' },
+        { title: '密码', field: 'name', align: 'center' },
+        { title: '创建时间', field: 'start_date', align: 'center',templet: '#task-createTime'},
+        { title: '是否在线', field: 'next_run_time', align: 'center', templet: '#task-status' },
         { title: '操作', toolbar: '#role-bar', align: 'center', width: 195 }
       ]
     ]
@@ -151,7 +150,7 @@
     }
 
     window.remove = function (obj) {
-      layer.confirm('确定要移除该任务', { icon: 3, title: '提示' }, function (index) {
+      layer.confirm('确定要删除该账号', { icon: 3, title: '提示' }, function (index) {
         layer.close(index)
         let loading = layer.load()
         $.ajax({
