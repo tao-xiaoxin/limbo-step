@@ -19,8 +19,6 @@ def add_auth_session():
             if p.enable == 0:
                 continue
             user_power.append(p.code)
-    print("add_auth_session")
-    print(user_power)
     session['permissions'] = user_power
 
 
@@ -40,7 +38,7 @@ def make_menu_tree():
             # 一二级菜单
             if int(p.type) in [0,1] and p not in powers:
                 powers.append(p)
-    print(powers)
+    print("powers",powers)
     power_schema = PowerOutSchema(many=True)  # 用已继承 ma.ModelSchema 类的自定制类生成序列化类
     power_dict = power_schema.dump(powers)  # 生成可序列化对象
     power_dict.sort(key=lambda x: (x['parent_id'], x['id']), reverse=True)
@@ -58,7 +56,7 @@ def make_menu_tree():
             menu_dict[_dict['parent_id']] = [_dict]
         else:
             menu_dict[_dict['parent_id']].append(_dict)
-    print(menu_dict)
+    print("menu_dict",menu_dict)
     return sorted(menu_dict.get(0), key=lambda item: item['sort'])
 
 
