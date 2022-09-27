@@ -6,14 +6,14 @@ from . import rights_bp
 from ...common import admin
 
 
-# 管理员配置
+# 配置
 @rights_bp.get('/configs')
 @login_required
 def configs():
     return admin.get_render_config()
 
 
-# 管理员菜单
+# 菜单
 @rights_bp.get('/menu')
 @login_required
 def menu():

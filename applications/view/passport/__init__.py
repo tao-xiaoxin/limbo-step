@@ -5,7 +5,7 @@ from applications.common import admin as index_curd
 from applications.common.admin_log import login_log
 from applications.common.utils.http import fail_api, success_api
 from applications.models import User
-
+import re
 passport_bp = Blueprint('passport', __name__, url_prefix='/passport')
 
 
@@ -39,8 +39,9 @@ def login_post():
     password = req.get('password')
     code = req.get('captcha').__str__().lower()
 
-    if not email or not password or not code:
-        return fail_api(msg="用户名或密码没有输入")
+    if not email or not password or not code or not re.match(
+            r'^[0-9a-za-z_]{0,19}@[0-9a-za-z]{1,13}\.[com,cn,net]{1,3}$', email):
+        return fail_api(msg="请输入正确的邮箱账号或密码!")
     s_code = session.get("code", None)
     session["code"] = None
 
