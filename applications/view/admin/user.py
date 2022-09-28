@@ -12,7 +12,6 @@ from applications.extensions import db
 from applications.models import Role
 from applications.models import User, AdminLog
 from applications.schemas import UserOutSchema
-
 admin_user = Blueprint('adminUser', __name__, url_prefix='/admin/user')
 
 
