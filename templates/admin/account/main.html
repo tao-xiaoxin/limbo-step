@@ -22,11 +22,11 @@
 </script>
 
 <script type="text/html" id="role-bar">
-    {% if authorize("admin:task:edit") %}
+    <!-- {% if authorize("admin:task:edit") %}
         <button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i
                 class="layui-icon layui-icon-edit"></i>
         </button>
-    {% endif %}
+    {% endif %} -->
     {% if authorize("admin:task:remove") %}
         <button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i
                 class="layui-icon layui-icon-delete"></i>
@@ -140,15 +140,15 @@
 
 
 
-    window.edit = function (obj) {
-      layer.open({
-        type: 2,
-        title: '修改',
-        shade: 0.1,
-        area: ['500px', '500px'],
-        content: MODULE_PATH + 'edit/' + obj.data['account_id']
-      })
-    }
+    // window.edit = function (obj) {
+    //   layer.open({
+    //     type: 2,
+    //     title: '修改',
+    //     shade: 0.1,
+    //     area: ['500px', '500px'],
+    //     content: MODULE_PATH + 'edit/' + obj.data['account_id']
+    //   })
+    // }
 
     window.remove = function (obj) {
       layer.confirm('确定要删除该账号?', { icon: 3, title: '提示' }, function (index) {
