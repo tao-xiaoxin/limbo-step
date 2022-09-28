@@ -1,92 +1,120 @@
 from flask import Blueprint, request, render_template
+from flask_login import current_user
+from applications.models.admin_user import User2Account
+from applications.libs import mi_login
+from applications.extensions import db
 from applications.common.utils.http import table_api, fail_api, success_api
-admin_account = Blueprint('admin_account', __name__, url_prefix='/admin/account')
+
+admin_account = Blueprint("admin_account", __name__, url_prefix="/admin/account")
 
 
-@admin_account.get('/')
+@admin_account.get("/")
 def main():
-    return render_template('admin/account/main.html')
+    return render_template("admin/account/main.html")
 
-@admin_account.route('/add_job', methods=['GET'])
-def add_task():
-    return '6'
 
-@admin_account.route('/data', methods=['GET'])
-def get_task():  # 获取
-    # jobs = scheduler.get_jobs()
-    jobs_list = []
-    # for job in jobs:
-    #     jobs_list.append(job_to_dict(job))
-    return table_api(data=jobs_list, count=len(jobs_list))
+@admin_account.route("/data", methods=["GET"])
+def get_account():
+    account_list = list()
+    query_condition = dict()
+    row_id = [i.id for i in current_user.role][0]
+    if row_id != 1:
+        query_condition["user_id"] = current_user.id
+    o_user2account = User2Account.query.filter_by(**query_condition).all()
+    n = 0
+    for qs in o_user2account:
+        if qs.is_activate:
+            is_activate = "在线"
+        else:
+            is_activate = "掉线"
+        n = n + 1
+        account_list.append(
+            {
+                "id": n,
+                "account_id": qs.account_id,
+                "phone": qs.phone,
+                "password": qs.password,
+                "create_time": qs.create_time,
+                "is_activate": is_activate,
+                "scope": qs.scope,
+            }
+        )
+    return table_api(data=account_list, count=len(account_list))
+
+
+@admin_account.post("/save")
+def save():
+    phone = request.json.get("phone")
+    password = request.json.get("password")
+    gte_scope = request.json.get("gte_scope")
+    lte_scope = request.json.get("lte_scope")
+    if not phone or not password or not gte_scope or not lte_scope:
+        return fail_api(msg="不可以为空!")
+    try:
+        if int(gte_scope) < 9999:
+            return fail_api(msg="最低步数不小于9999!")
+        if int(lte_scope) > 98000:
+            return fail_api(msg="最高步数不大于98000!")
+        if int(lte_scope) < int(gte_scope):
+            return fail_api(msg="最高步数不能大于最低步数!")
+    except Exception as e:
+        return fail_api(msg="输入有误,请清空重试!")
+    login_token, mi_uid = mi_login.login(phone, password)
+    if not login_token or not mi_uid:
+        return fail_api(msg="小米运动账号登录失败!")
+    o_user2account = User2Account.query.filter_by(phone=phone).first()
+    if not o_user2account:
+        ...
+    else:
+        uid = current_user.id
+        user2account = User2Account(
+            phone=phone,
+            password=password,
+            user_id=uid,
+            scope=str("{}~{}".format(gte_scope, lte_scope)),
+        )
+        db.session.add(user2account)
+        db.session.commit()
+    return success_api(msg="操作成功!")
 
 
 # 增加
-@admin_account.get('/add')
+@admin_account.get("/add")
 def add():
-    return render_template('admin/task/add.html', task_list=task_list)
+    return render_template("admin/account/add.html")
 
 
-@admin_account.post('/save')
-def save():
-    # _id = request.json.get("id")
-    # name = request.json.get("id")
-    # type = request.json.get("type")
-    # functions = request.json.get("functions")
-    # datetime = request.json.get("datetime")
-    # time = request.json.get("time")
-    # if not hasattr(tasks, functions):
-    #     return fail_api()
-    # if type == 'date':
-    #     scheduler.add_job(
-    #         func=getattr(tasks, functions),
-    #         id=_id,
-    #         name=name,
-    #         args=(1, 1),
-    #         trigger=type,
-    #         run_date=datetime,
-    #         replace_existing=True)
-    # elif type == 'interval':
-    #     scheduler.add_job(
-    #         func=getattr(tasks, functions),
-    #         id=_id,
-    #         name=name,
-    #         args=(1, 1),
-    #         trigger=type,
-    #         replace_existing=True)
-    # elif type == 'cron':
-    #     scheduler.add_job(
-    #         func=getattr(tasks, functions),
-    #         id=_id,
-    #         name=name,
-    #         args=(1, 1),
-    #         trigger=type,
-    #         replace_existing=True)
-
-    return success_api()
+# 修改
+@admin_account.get("/edit/<int:_account_id>")
+def edit(_account_id):
+    o_user2account = User2Account.query.filter_by(account_id=_account_id).first()
+    scope = str(o_user2account.scope).split("~")
+    return render_template(
+        "admin/account/edit.html",
+        data={
+            "account_id": _account_id,
+            "phone": o_user2account.phone,
+            "password": o_user2account.password,
+            "gte": scope[0],
+            "lte": scope[1],
+        },
+    )
 
 
 # 恢复
-@admin_account.put('/enable')
+@admin_account.put("/enable")
 def enable():
-    # _id = request.json.get('id')
-    # # print(id)
-    # if _id:
-    #     scheduler.resume_job(str(_id))
-    #     return success_api(msg="启动成功")
     return fail_api(msg="数据错误")
 
 
 # 暂停
-@admin_account.put('/disable')
+@admin_account.put("/disable")
 def dis_enable():
-    # _id = request.json.get('id')
-    # if _id:
-        # scheduler.pause_job(str(_id))
-        # return success_api(msg="暂停成功")
     return fail_api(msg="数据错误")
 
 
-@admin_account.delete('/remove/<int:_id>')
-def remove_job(_id):  # 移除
+@admin_account.delete("/remove/<int:_account_id>")
+def remove_job(_account_id):  # 移除
+    print(_account_id)
     # scheduler.remove_job(str(_id))
     return success_api(msg="删除成功")

@@ -56,12 +56,11 @@ def register_post():
     # # 每日一言
     remark = str(get_briefly()).split("/")[-1]
     user = User(username=username, email=email, remark=remark)
-    user.set_password(password)
-    user.set_password(password)
-    db.session.add(user)
-    roles = Role.query.filter(Role.id.in_([3,])).all()
+    role_id=[3,]
+    roles = Role.query.filter(Role.id.in_(role_id)).all()
     for r in roles:
         user.role.append(r)
+    user.set_password(password)
     db.session.add(user)
     db.session.commit()
     # 注册成功后直接登录后台

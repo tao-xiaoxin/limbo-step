@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>新增定时任务</title>
+    <title>修改账号信息</title>
     {% include 'admin/common/header.html' %}</head>
 <body>
 <form class="layui-form" action="">
@@ -11,8 +11,9 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">小米运动账号</label>
                     <div class="layui-input-block">
-                        <input type="text" name="phone" lay-verify="title" autocomplete="off" placeholder="请输入小米运动账号!"
-                               class="layui-input">
+                        <input type="text" name="phone" lay-verify="title" autocomplete="off" value="{{ phone }}"  placeholder="请输入小米运动账号!"
+                               class="layui-input" > {{ data.phone }}
+                        <!-- <option value=""></option> -->
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -36,6 +37,40 @@
                                class="layui-input">
                     </div>
                 </div>
+                <ul>
+                    <!-- {% for i in data %} -->
+                       <!-- <li>{{ i.nphone }}</li> -->
+                       <!-- <ul> -->
+                       <!-- {% for phone in person.phones %} -->
+                           <!-- <li>{{ phone.name }}</li> -->
+                       <!-- {% else %} -->
+                           <!-- <li>无</li> -->
+                       <!-- {% endfor %} -->
+                       <!-- </ul> -->
+                   <!-- {% endfor %} -->
+               </ul>
+                <!-- <div class="layui-form-item">
+                    <label class="layui-form-label">函数</label>
+                    <div class="layui-input-block">
+                        <select name="functions" lay-verify="required" lay-search>
+                            {% for task in task_list %}
+                                <option value="{{ task }}">{{ task }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item" id="datetimeItem">
+                    <label class="layui-form-label">固定时间</label>
+                    <div class="layui-input-block">
+                        <input name="datetime" type="text" class="layui-input" id="datetime">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="display: none" id="timeItem">
+                    <label class="layui-form-label">时间</label>
+                    <div class="layui-input-block">
+                        <input name="time"  type="text" class="layui-input" id="time">
+                    </div>
+                </div> -->
                 </select>
             </div>
         </div>
@@ -71,6 +106,26 @@
             elem: '#time'
             , type: 'time'
         });
+
+
+        form.on('select(type)', function (data) {
+            if (data.value === 'date') {
+                $('#timeItem').hide()
+                $('#datetimeItem').show()
+            } else if (data.value === 'interval') {
+                console.log('interval')
+                 $('#datetimeItem').hide()
+                $('#timeItem').show()
+                 $('#timeItem').val('')
+
+            } else if (data.value === 'cron') {
+                console.log('cron')
+                 $('#datetimeItem').hide()
+                $('#timeItem').show()
+                $('#timeItem').val('')
+            }
+        })
+
 
         form.on('submit(role-save)', function (data) {
             $.ajax({

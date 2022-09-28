@@ -56,9 +56,6 @@ def make_menu_tree():
             menu_dict[_dict['parent_id']] = [_dict]
         else:
             menu_dict[_dict['parent_id']].append(_dict)
-    print("powers",powers)
-    print("---------------->")
-    print("menu_dict",menu_dict)
     return sorted(menu_dict.get(0), key=lambda item: item['sort'])
 
 
