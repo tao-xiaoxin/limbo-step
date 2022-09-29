@@ -63,12 +63,16 @@ def save():
     app_id = request.json.get("app_id")
     if not app_id:
         return fail_api(msg="不可以为空!")
+    uid=current_user.id
+    o_user2push=User2Push.query.filter_by(uid=uid).first()
+    if o_user2push:
+        return fail_api(msg="令牌绑定超出限制,每个用户只可以仅限绑定一个!")
     title = "{}消息推送".format(configs.SYSTEM_NAME)
-    send_result=send_push(app_id,title,content="账号绑定成功!")
+    send_result=send_push(token=app_id,title=title,content="账号绑定成功!",template="markdown")
     if str(send_result["code"]) ==str(200):
         user2account = User2Push(
             app_id=app_id,
-            uid=current_user.id,
+            uid=uid,
         )
         db.session.add(user2account)
         db.session.commit()
