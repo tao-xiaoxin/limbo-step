@@ -53,7 +53,7 @@ class User2Account(db.Model):
 class User2Push(db.Model):
     __tablename__ = 'file_user2push'
     app_id = db.Column(db.String(180), primary_key=True, comment='推送+token',)
-    uid = db.Column((db.Integer), comment='绑定用户id', )
+    uid = db.Column(db.Integer, comment='绑定用户id',unique=True)
     create_time = db.Column(db.DateTime, default=datetime.datetime.now, comment='创建时间')
     is_activate = db.Column(db.Boolean,default=True,comment='是否有效')
     
