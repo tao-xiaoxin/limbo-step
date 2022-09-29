@@ -62,19 +62,14 @@ def save():
     login_token, mi_uid = mi_login.login(phone, password)
     if not login_token or not mi_uid:
         return fail_api(msg="小米运动账号登录失败!")
-    o_user2account = User2Account.query.filter_by(phone=phone).first()
-    if not o_user2account:
-        ...
-    else:
-        uid = current_user.id
-        user2account = User2Account(
-            phone=phone,
-            password=password,
-            user_id=uid,
-            scope=str("{}~{}".format(gte_scope, lte_scope)),
-        )
-        db.session.add(user2account)
-        db.session.commit()
+    user2account = User2Account(
+        phone=phone,
+        password=password,
+        user_id=current_user.id,
+        scope=str("{}~{}".format(gte_scope, lte_scope)),
+    )
+    db.session.add(user2account)
+    db.session.commit()
     return success_api(msg="操作成功!")
 
 
@@ -114,7 +109,11 @@ def dis_enable():
 
 
 @admin_account.delete("/remove/<int:_account_id>")
-def remove_job(_account_id):  # 移除
-    print(_account_id)
-    # scheduler.remove_job(str(_id))
+def remove_account(_account_id):  # 移除
+    o_user2account=User2Account.query.get(_account_id)
+    try:
+        db.session.delete(o_user2account)
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
     return success_api(msg="删除成功")
