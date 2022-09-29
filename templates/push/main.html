@@ -142,7 +142,7 @@
         layer.close(index)
         let loading = layer.load()
         $.ajax({
-          url: MODULE_PATH + 'remove/' + obj.data['account_id'],
+          url: MODULE_PATH + 'remove/',
           dataType: 'json',
           type: 'delete',
           success: function (result) {

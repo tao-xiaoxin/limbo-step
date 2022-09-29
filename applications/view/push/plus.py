@@ -47,14 +47,12 @@ def add():
 
 
 # 删除
-@push_plus.delete("/remove/<int:_app_id>")
-def remove_account(_app_id):  # 移除
-    o_user2account=User2Push.query.get(_app_id)
-    try:
-        db.session.delete(o_user2account)
-        db.session.commit()
-    except Exception as e:
-        db.session.rollback()
+# @push_plus.delete("/remove/")
+@push_plus.route('/remove/', methods=["DELETE"])  
+def remove_account():  # 移除
+    uid=current_user.id
+    o_user2account=User2Push.query.filter_by(uid=uid).delete(synchronize_session=False)
+    db.session.commit()
     return success_api(msg="删除成功")
 
 
