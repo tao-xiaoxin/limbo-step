@@ -12,15 +12,15 @@ class BaseConfig:
         #     "title": "官方网站",
         #     "href": "http://www.pearadmin.com"
         # },
-        {
-            "icon": "layui-icon layui-icon-auz",
-            "title": "开发文档",
-            "href": "http://www.pearadmin.com"
-        },
+        # {
+        #     "icon": "layui-icon layui-icon-auz",
+        #     "title": "开发文档",
+        #     "href": "http://www.pearadmin.com"
+        # },
         {
             "icon": "layui-icon layui-icon-auz",
             "title": "开源地址",
-            "href": "https://gitee.com/Jmysy/Pear-Admin-Layui"
+            "href": "https://github.com/tao-xiaoxin/limbo-step"
         }
     ]
 
