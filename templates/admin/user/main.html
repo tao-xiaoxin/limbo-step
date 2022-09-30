@@ -142,16 +142,16 @@
     })
 
     // 公司部门树状图菜单
-    dtree.render({
-      elem: '#dept-tree',
-      method: 'get',
-      url: '/dept/tree',
-      dataFormat: 'list',
-      line: true,
-      skin: 'laySimple',
-      icon: '-1',
-      response: { treeId: 'deptId', parentId: 'parentId', title: 'deptName' },
-    })
+    // dtree.render({
+    //   elem: '#dept-tree',
+    //   method: 'get',
+    //   url: '/dept/tree',
+    //   dataFormat: 'list',
+    //   line: true,
+    //   skin: 'laySimple',
+    //   icon: '-1',
+    //   response: { treeId: 'deptId', parentId: 'parentId', title: 'deptName' },
+    // })
 
     // 菜单栏渲染
     dtree.on('node(\'dept-tree\')', function (obj) {
