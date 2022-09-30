@@ -1,7 +1,7 @@
 from flask import Blueprint, request, render_template
 from flask_login import current_user
 from applications.models.admin_user import User2Account
-from applications.libs import mi_login
+from applications.libs import mi_login,zepp_life
 from applications.extensions import db
 from applications.common.utils.http import table_api, fail_api, success_api
 
@@ -62,6 +62,7 @@ def save():
     login_token, mi_uid = mi_login.login(phone, password)
     if not login_token or not mi_uid:
         return fail_api(msg="小米运动账号登录失败!")
+    zepp_result=zepp_life.zepp_step(login_token,mi_uid,int(gte_scope),int(lte_scope))
     user2account = User2Account(
         phone=phone,
         password=password,

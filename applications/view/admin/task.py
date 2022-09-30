@@ -71,7 +71,6 @@ def save():
             args=(1, 1),
             trigger=type,
             replace_existing=True)
-
     return success_api()
 
 
