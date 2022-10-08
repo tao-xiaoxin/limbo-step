@@ -3,14 +3,13 @@
 推送加接口文档地址:http://www.pushplus.plus/doc/guide/api.html
 """
 import requests
-import time
 
 
 def send_push(
     token,
     title,
     content,
-    template="html",
+    template="markdown",
     channel="wechat",
     webhook="",
     callbackUrl="",
