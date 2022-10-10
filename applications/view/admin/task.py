@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template
 from flask_apscheduler.utils import job_to_dict
-from applications.libs import mi_login,zepp_life,send_push
+from applications.libs import mi_login, zepp_life, send_push
 from applications.common.tasks import tasks
 from applications.common.tasks.tasks import task_list
 from applications.common.utils.http import table_api, fail_api, success_api
@@ -47,7 +47,7 @@ def save():
     print(request.json)
     if not hasattr(tasks, functions):
         return fail_api()
-    
+
     if type == 'date':
         scheduler.add_job(
             func=getattr(tasks, functions),
@@ -70,7 +70,7 @@ def save():
             func=getattr(tasks, functions),
             id=_id,
             name=name,
-            args=(1, 1),
+            args=(0, 1),
             trigger=type,
             replace_existing=True)
     return success_api()

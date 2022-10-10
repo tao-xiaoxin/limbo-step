@@ -8,12 +8,14 @@ headers = {
     'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9; MI 6 MIUI/20.6.18)'
 }
 
+
 # 获取时间戳
 def get_time():
     url = 'http://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp'
     response = requests.get(url, headers=headers).json()
     t = response['data']['t']
     return t
+
 
 # 获取app_token
 def get_app_token(login_token):
@@ -22,9 +24,15 @@ def get_app_token(login_token):
     app_token = response['token_info']['app_token']
     return app_token
 
-def zepp_step(login_token,uid,gte,lte):
+
+def zepp_step(login_token, uid, gte, lte):
     '''
     小米运动主函数
+    :param login_token: 登录后的token
+    :param uid: 用户id
+    :param gte: 起始值
+    :param lte: 结束值
+    :return:
     '''
     step = str(random.randint(gte, lte))
 
@@ -51,9 +59,4 @@ def zepp_step(login_token,uid,gte,lte):
     # print(response)
     # result = f"账号:修改步数（{step}）[" + response['message']
     # print(result)
-    return response
-
-
-
-
-
+    return step, response
