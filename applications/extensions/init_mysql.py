@@ -15,9 +15,13 @@ def get_result(sql):
     :param sql:
     :return:
     '''
-    cursor.execute(sql)
-    results = cursor.fetchall()
+    try:
+        cursor.execute(sql)
+        results = cursor.fetchall()
+    except:
+        return ''
     return results
+
 
 def update_result(sql):
     '''
@@ -33,5 +37,3 @@ def update_result(sql):
     except:
         # Rollback in case there is any error
         db.rollback()
-
-

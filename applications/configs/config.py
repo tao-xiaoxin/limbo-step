@@ -43,10 +43,10 @@ class BaseConfig:
 
     # mysql 配置
     MYSQL_USERNAME = os.getenv('MYSQL_USERNAME') or "root"
-    MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD') or "123456"
+    MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD') or "upper"
     MYSQL_HOST = os.getenv('MYSQL_HOST') or "127.0.0.1"
     MYSQL_PORT = int(os.getenv('MYSQL_PORT') or 3306)
-    MYSQL_DATABASE = os.getenv('MYSQL_DATABASE') or "PearAdminFlask"
+    MYSQL_DATABASE = os.getenv('MYSQL_DATABASE') or "StepDatabase"
 
     # mysql 数据库的配置信息
     SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{MYSQL_USERNAME}:{urlquote(MYSQL_PASSWORD)}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DATABASE}?charset=utf8mb4"
