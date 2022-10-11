@@ -47,7 +47,7 @@ class TasksLog(db.Model):
     task_type = db.Column(db.String(180),comment="任务类型",)
     content = db.Column(db.Text,comment="定时任务日志执行结果内容",)
     outcome = db.Column(db.Boolean, default=True, comment="是否成功")
-    create_time = db.Column(db.DateTime, default=datetime.datetime.now, comment="创建时间")
+    time_stamp = db.Column(db.String(180), default=datetime.datetime.now, comment="创建时间")
 
 
 class User2Account(db.Model):
