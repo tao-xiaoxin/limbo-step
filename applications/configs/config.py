@@ -7,16 +7,16 @@ class BaseConfig:
     SYSTEM_NAME = os.getenv('SYSTEM_NAME', 'Limbo Microstep')
     # 主题面板的链接列表配置
     SYSTEM_PANEL_LINKS = [
-        # {
-        #     "icon": "layui-icon layui-icon-auz",
-        #     "title": "官方网站",
-        #     "href": "http://www.pearadmin.com"
-        # },
-        # {
-        #     "icon": "layui-icon layui-icon-auz",
-        #     "title": "开发文档",
-        #     "href": "http://www.pearadmin.com"
-        # },
+        {
+            "icon": "layui-icon layui-icon-auz",
+            "title": "官方网站",
+            "href": "http://www.pearadmin.com"
+        },
+        {
+            "icon": "layui-icon layui-icon-auz",
+            "title": "开发文档",
+            "href": "http://www.pearadmin.com"
+        },
         {
             "icon": "layui-icon layui-icon-auz",
             "title": "开源地址",
