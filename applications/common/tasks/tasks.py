@@ -1,7 +1,4 @@
-from applications.extensions.init_mysql import cursor, db, get_result, update_result
-from applications.libs import mi_login, zepp_life, send_push
-from applications.models.admin_user import *
-import time
+import datetime
 
 task_list = ['task2', 'task3', 'task4']
 
@@ -16,5 +13,3 @@ def task3(a, b):
 
 def task4(a, b):
     print(f'定时任务_4_{a}{b}{datetime.datetime.now()}')
-
-
