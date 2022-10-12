@@ -148,61 +148,7 @@ flask new --type view --name test/a
 # 访问http://127.0.0.1:5000/test/a/
 ```
 
-#### 预览项目
-
-|  |  |
-|---------------------|---------------------|
-| ![](docs/assets/1.jpg)  | ![](docs/assets/2.jpg)  |
-| ![](docs/assets/3.jpg)|  ![](docs/assets/4.jpg)   |
-| ![](docs/assets/5.jpg) |  ![](docs/assets/6.jpg)   |
-
-[comment]: <> (=======)
-
-[comment]: <> (# mimotion)
-
-[comment]: <> (![ 刷步数]&#40;https://github.com/xunichanghuan/mimotion/actions/workflows/run.yml/badge.svg&#41;)
-
-[comment]: <> (![同步到Gitee]&#40;https://github.com/xunichanghuan/mimotion/actions/workflows/sync2gitee.yml/badge.svg&#41;)
-
-[comment]: <> ([![GitHub forks]&#40;https://img.shields.io/github/forks/xunichanghuan/mimotion?style=flat-square&#41;]&#40;https://github.com/xunichanghuan/mimotion/network&#41;)
-
-[comment]: <> ([![GitHub stars]&#40;https://img.shields.io/github/stars/xunichanghuan/mimotion?style=flat-square&#41;]&#40;https://github.com/xunichanghuan/mimotion/stargazers&#41;)
-
-[comment]: <> ([![GitHub issues]&#40;https://img.shields.io/github/issues/xunichanghuan/mimotion?style=flat-square&#41;]&#40;https://github.com/xunichanghuan/mimotion/issues&#41;)
-
-
 ## Limbo Microstep 使用指南
-### 二、设置账号密码
-> 添加名为  **USER**、**PWD**、**SKEY**、**SCKEY**、**POSITION** 、**CORPID**、**CORPSECRET**、**AGENTID**、**TOUSER**、**TOPARTY**、**TOTAG**、**OPEN_GET_WEATHER**、**AREA**的变量: Settings-->Secrets-->New secret  
-
-| Secrets |  格式  |
-| -------- | ----- |
-| USER |   小米运动登录账号,仅支持小米运动账号对应的手机号,不支持小米账号|
-| PWD |   小米运动登录密码,仅支持小米运动账号对应的密码|
-| SCKEY |   server酱sckey，如无填写**NO**|
-| POSITION |   是否开启企业微信推送**false**关闭,**true**开启|
-| CORPID |   企业ID， 登陆企业微信，在我的企业-->企业信息里查看,必填，如果没有，填写**NO**|
-| CORPSECRET |   自建应用，每个自建应用里都有单独的secret,必填，如果没有，填写**NO**|
-| AGENTID |   填写你的应用ID，不加引号，是个整型常数,就是AgentId，如果没有，填写**NO**|
-| TOUSER |   指定接收消息的成员，成员ID列表（多个接收者用”&#166;”分隔，最多支持1000个）。特殊情况：指定为”@all”，则向该企业应用的全部成员发送，如果没有，填写**NO**|
-| TOPARTY |   指定接收消息的部门，部门ID列表，多个接收者用”&#166;”分隔，最多支持100个。当touser为”@all”时填写”@all”，如果没有，填写**NO**|
-| TOTAG |   指定接收消息的标签，标签ID列表，多个接收者用”&#166;”分隔，最多支持100个。当touser为”@all”时填写”@all”，如果没有，填写**NO**|
-| OPEN_GET_WEATHER |   开启根据地区天气情况降低步数**False**关闭,**True**开启|
-
-
-#### 例如
-
-**13800138000#13800138001** 变量 **USER**
-
-**abc123qwe#abcqwe2** 变量 **PWD**
-
-### 四、自定义启动时间
-
-编辑 **main.py**
-
-找到 time_list项目，此数据为北京时间，默认表示为8点10点13点15点17点19点21点运行,如需修改，请修改time_list列表，如：time_list = [7, 9, 13, 15, 17, 19, 20]就表示为7点9点13点15点17点19点20点运行，Actions触发里面也要同步修改。
-编辑 **random_cron.sh**
-修改其中**if**语句的判断时间为UTC时间，即**北京时间-8**，如北京时间8点为UTC时间0点，需要运行的时间-8就是UTC时间
 
 
 
@@ -217,3 +163,11 @@ flask new --type view --name test/a
 4. 小米运动不会更新步数，只有关联的会同步！！！！！
 
 5. 请注意，账号不是 [小米账号]，而是 [小米运动] 的账号。
+
+### 预览项目
+
+|                        |  |
+|------------------------|---------------------|
+| ![](docs/assets/8.jpg) | ![](docs/assets/2.jpg)  |
+| ![](docs/assets/3.jpg) |  ![](docs/assets/4.jpg)   |
+| ![](docs/assets/5.jpg) |  ![](docs/assets/6.jpg)   |
