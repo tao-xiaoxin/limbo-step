@@ -27,7 +27,7 @@ BAIDU_API_KEY=''    # 百度应用APPID
 BAIDU_API_KEY=''    # 百度应用SECRETKEY
 
 # 密钥配置(记得改)
-SECRET_KEY='pear-admin-flask'
+SECRET_KEY='v6%h-2bpxret#!&o231izhkf-$ox)bglsbr-2pxkr0jk4-ss14'
 
 # 邮箱配置
 MAIL_SERVER='smtp.qq.com'
