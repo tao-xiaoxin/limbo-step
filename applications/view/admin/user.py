@@ -113,10 +113,13 @@ def update():
     a = xss_escape(req_json.get("roleIds"))
     id = xss_escape(req_json.get("userId"))
     username = xss_escape(req_json.get('username'))
-    real_name = xss_escape(req_json.get('realName'))
-    dept_id = xss_escape(req_json.get('deptId'))
+    # real_name = xss_escape(req_json.get('realName'))
+    # dept_id = xss_escape(req_json.get('deptId'))
     role_ids = a.split(',')
-    User.query.filter_by(id=id).update({'username': username, 'realname': real_name, 'dept_id': dept_id})
+    User.query.filter_by(id=id).update({'username': username, 
+    # 'realname': real_name, 
+    # 'dept_id': dept_id
+    })
     u = User.query.filter_by(id=id).first()
 
     roles = Role.query.filter(Role.id.in_(role_ids)).all()

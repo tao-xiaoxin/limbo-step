@@ -56,7 +56,7 @@ def register_post():
     # # 每日一言
     remark = str(get_briefly()).split("/")[-1]
     user = User(username=username, email=email, remark=remark)
-    role_id=[3,]
+    role_id=[2,]
     roles = Role.query.filter(Role.id.in_(role_id)).all()
     for r in roles:
         user.role.append(r)
