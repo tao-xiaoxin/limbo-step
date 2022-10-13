@@ -17,3 +17,4 @@ Flask-Login==0.5.0
 Flask==2.0.1
 Flask-Script==2.0.6
 baidu-aip==4.16.7
+docker-compose==1.29.2
