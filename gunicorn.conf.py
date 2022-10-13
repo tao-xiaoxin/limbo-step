@@ -17,3 +17,6 @@ if not os.path.exists('logs'):
 
 accesslog = os.path.join(chdir, "logs/gunicorn_access.log")
 errorlog = os.path.join(chdir, "logs/gunicorn_error.log")
+
+# 代码发生变化是否自动重启
+reload=True
