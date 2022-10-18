@@ -1,7 +1,7 @@
 import os
 import multiprocessing
 
-bind = '0.0.0.0:8000'
+bind = '0.0.0.0:65535'
 backlog = 512
 chdir = os.path.dirname(os.path.abspath(__file__))
 timeout = 30
