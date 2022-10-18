@@ -72,7 +72,8 @@ limbo-step
 └─.env # 项目的配置文件
 
 ```
-### Limbo Microstep 部署指南
+## Limbo Microstep 使用指南
+
 <br />
 
 #### 项目安装
@@ -133,9 +134,11 @@ flask db migrate
 # 同步数据库
 
 flask db upgrade
-```
 
-执行 flask run 命令启动项目
+#执行命令启动项目 
+
+flask run 
+```
 
 #### 命令行创建视图
 
@@ -148,7 +151,28 @@ flask new --type view --name test/a
 # 访问http://127.0.0.1:5000/test/a/
 ```
 
-## Limbo Microstep 使用指南
+### Limbo Microstep 部署指南
+
+#### 运行项目
+
+```bash
+# 运行项目
+bash start.sh
+
+# 启动定时任务
+nohup python3 task.py >logs/crontab.log 2>&1 &
+
+# 安装Nginx
+yum install nginx -y
+
+```
+
+
+#### 部署Nginx
+
+打开目录文件 `limbo-step/applications/configs/nginx.conf`
+
+> 将项目路径和域名：limbo.xxx.top 修改为你的即可
 
 
 
@@ -164,10 +188,12 @@ flask new --type view --name test/a
 
 5. 请注意，账号不是 [小米账号]，而是 [小米运动] 的账号。
 
+6. 只有关联了[推送加]，才能推送步数到微信
+
 ### 预览项目
 
-|                        |  |
-|------------------------|---------------------|
-| ![](docs/assets/8.jpg) | ![](docs/assets/2.jpg)  |
-| ![](docs/assets/3.jpg) |  ![](docs/assets/4.jpg)   |
-| ![](docs/assets/5.jpg) |  ![](docs/assets/6.jpg)   |
+|                        |                        |
+|------------------------|------------------------|
+| ![](docs/assets/8.jpg) | ![](docs/assets/2.jpg) |
+| ![](docs/assets/3.jpg) | ![](docs/assets/4.jpg) |
+| ![](docs/assets/5.jpg) | ![](docs/assets/6.jpg) |

@@ -58,3 +58,4 @@ def mi_task():
                 UPDATE file_user2push SET IS_ACTIVATE = 0 WHERE APP_ID = {}
                 '''.format(row2[0]))
         time.sleep(1)
+        print("今日步数结果推送,"+"今日运动结果为:<br>{}".format(str.join("<br>", acc_list)))
