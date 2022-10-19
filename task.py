@@ -8,7 +8,7 @@ scheduler = BlockingScheduler(timezone='Asia/Shanghai',)
 
 
 def run():
-    scheduler.add_job(mi_task, 'cron', hour=8, minute=8,)
+    scheduler.add_job(mi_task, 'cron', hour=8, minute=48,)
     # scheduler.add_job(mi_task, 'interval', seconds=10)
     try:
         scheduler.start()
