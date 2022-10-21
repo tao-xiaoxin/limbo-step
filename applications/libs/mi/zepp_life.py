@@ -10,11 +10,17 @@ headers = {
 
 
 # 获取时间戳
-def get_time():
-    url = 'http://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp'
+def get_times():
+    url = 'http://quan.suning.com/getSysTime.do'
     response = requests.get(url, headers=headers).json()
-    t = response['data']['t']
+    t = response['sysTime1']
     return t
+# def get_time():
+#     url = 'http://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp'
+#     url ='http://quan.suning.com/getSysTime.do'
+#     response = requests.get(url, headers=headers).json()
+#     t = response['data']['t']
+#     return t
 
 
 # 获取app_token
