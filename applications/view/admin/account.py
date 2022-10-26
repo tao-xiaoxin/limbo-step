@@ -2,9 +2,9 @@ from flask import Blueprint, request, render_template
 from flask_login import current_user
 from applications.models.admin_user import User2Account
 from applications.libs import mi_login,zepp_life
+from applications.libs.mi.other_mi import pig_step,phone_step,email_step
 from applications.extensions import db
 from applications.common.utils.http import table_api, fail_api, success_api
-
 admin_account = Blueprint("admin_account", __name__, url_prefix="/admin/account")
 
 
@@ -44,10 +44,12 @@ def get_account():
 
 @admin_account.post("/save")
 def save():
+    code_list =list()
     phone = request.json.get("phone")
     password = request.json.get("password")
     gte_scope = request.json.get("gte_scope")
     lte_scope = request.json.get("lte_scope")
+    
     if not phone or not password or not gte_scope or not lte_scope:
         return fail_api(msg="不可以为空!")
     try:
@@ -59,10 +61,29 @@ def save():
             return fail_api(msg="最高步数不能大于最低步数!")
     except Exception as e:
         return fail_api(msg="输入有误,请清空重试!")
-    login_token, mi_uid = mi_login.login(phone, password)
-    if not login_token or not mi_uid:
+    # login_token, mi_uid = mi_login.login(phone, password)
+    # if not login_token or not mi_uid:
+        # return fail_api(msg="小米运动账号登录失败!")
+    try:
+        login_token, mi_uid = mi_login.login(phone, password)
+        step, zeep_result=zepp_life.zepp_step(login_token,mi_uid,int(gte_scope),int(lte_scope))
+        code_list.append(str(zeep_result['code']))
+    except Exception as e:
+        pass
+    try:
+        pig_result =pig_step(phone, password,int(gte_scope),int(lte_scope)) 
+        code_list.append(str(pig_result['code']))
+    except Exception as e:pass
+    try:
+        phone_result = phone_step(phone, password,int(gte_scope),int(lte_scope))
+        code_list.append(str(phone_result['code']))
+    except Exception as e:pass
+    try:
+        email_result = email_step(phone, password,int(gte_scope),int(lte_scope))
+        code_list.append(str(email_result['code']))
+    except Exception as e:pass
+    if "200" not in code_list:
         return fail_api(msg="小米运动账号登录失败!")
-    zepp_result=zepp_life.zepp_step(login_token,mi_uid,int(gte_scope),int(lte_scope))
     user2account = User2Account(
         phone=phone,
         password=password,
