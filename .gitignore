@@ -117,3 +117,4 @@ dmypy.json
 #ide
 .idea/
 test.py
+crontab/nohup.out
