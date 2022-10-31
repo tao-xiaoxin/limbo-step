@@ -19,8 +19,8 @@ scheduler = BlockingScheduler(timezone='Asia/Shanghai', executors=executors)
 
 def run():
     # mi_job()
-    scheduler.add_job(mi_job, 'cron', hour=9, minute=24,)
     scheduler.add_job(mi_job, 'cron', hour=8, minute=8, )
+    scheduler.add_job(mi_job, 'cron', hour=9, minute=24,)
     scheduler.add_job(mi_job, 'cron', hour=10, minute=8, )
     scheduler.add_job(mi_job, 'cron', hour=12, minute=8, )
     scheduler.add_job(mi_job, 'cron', hour=15, minute=8, )
