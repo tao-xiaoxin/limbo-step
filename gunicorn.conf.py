@@ -7,7 +7,7 @@ chdir = os.path.dirname(os.path.abspath(__file__))
 timeout = 30
 worker_class = 'sync'
 
-workers = multiprocessing.cpu_count() * 2 + 1
+workers=2
 threads = 2
 loglevel = 'info'
 access_log_format = '%(t)s %(p)s %(h)s "%(r)s" %(s)s %(L)s %(b)s %(f)s" "%(a)s"'
