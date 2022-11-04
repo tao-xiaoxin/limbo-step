@@ -167,6 +167,22 @@ yum install nginx -y
 
 ```
 
+# 定时任务
+```bash
+
+# 切换到crontab目录下
+cd crontab/
+#添加并启动定时任务
+python manage.py crontab add
+#显示当前的定时任务
+python manage.py crontab show
+crontab -l
+#删除所有定时任务
+python manage.py crontab remove
+# 查看定时任务执行状态
+tail -f /var/log/cron
+service crond status
+```
 
 #### 部署Nginx
 

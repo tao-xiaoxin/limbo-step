@@ -135,12 +135,9 @@ CRONJOBS = [
     # * 表示 分钟(0-59) 小时(0-23) 每个月的哪一天(1-31) 月份(1-12) 周几(0-6) # 36 14 * * *
     ('8 8 * * *', 'applications.crontab.mi_job.mi_job', '>> {}'.format(os.path.join(LOG_PATH, "crontab.log"))),
     ('10 10 * * *', 'applications.crontab.mi_job.mi_job', '>> {}'.format(os.path.join(LOG_PATH, "crontab.log"))),
-    ('14 14 * * *', 'applications.crontab.mi_job.mi_job', '>> {}'.format(os.path.join(LOG_PATH, "crontab.log"))),
-    ('8 8 * * *', 'applications.crontab.mi_job.mi_job', '>> {}'.format(os.path.join(LOG_PATH, "crontab.log"))),
     ('12 12 * * *', 'applications.crontab.mi_job.mi_job', '>> {}'.format(os.path.join(LOG_PATH, "crontab.log"))),
     ('14 14 * * *', 'applications.crontab.mi_job.mi_job', '>> {}'.format(os.path.join(LOG_PATH, "crontab.log"))),
-    ('30 15 * * *', 'applications.crontab.mi_job.mi_job', '>> {}'.format(os.path.join(LOG_PATH, "crontab.log"))),
-    ('53 15 * * *', 'applications.crontab.mi_job.mi_job', '>> {}'.format(os.path.join(LOG_PATH, "crontab.log"))),
+    ('17 17 * * *', 'applications.crontab.mi_job.mi_job', '>> {}'.format(os.path.join(LOG_PATH, "crontab.log"))),
     ('19 19 * * *', 'applications.crontab.mi_job.mi_job', '>> {}'.format(os.path.join(LOG_PATH, "crontab.log"))),
     # ('*/1 * * * *', 'applications.crontab.mi_job.check', '>> {}'.format(os.path.join(LOG_PATH, "crontab.log"))),
 ]
