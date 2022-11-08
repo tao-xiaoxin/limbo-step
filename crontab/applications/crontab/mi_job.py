@@ -28,16 +28,19 @@ def generate_code(qs,code_list):
   try:
     step,response=pig_step(phone,pwd,step)
     code_list.append({"code":response['code'],"msg":response['msg'],"step":step})
+    time.sleep(15)
   except Exception as e:
     logging.error(e)
   try:
     step,response=phone_step(phone,pwd,step)
     code_list.append({"code":response['code'],"msg":response['msg'],"step":step})
+    time.sleep(15)
   except Exception as e:
     logging.error(e)
   try:
     step,response=email_step(phone,pwd,step)
     code_list.append({"code":response['code'],"msg":response['msg'],"step":step})
+    time.sleep(15)
   except Exception as e:
     logging.error(e)
   return code_list
@@ -86,7 +89,6 @@ def mi_job():
         new_phone = phone.replace(phone[3:7], 'xxxx')
         message=data_dict['msg']
         step=data_dict['step']
-        code = data_dict['code']
         row_dict = {"phone": phone, "pwd": pwd, "user_id": user_id,
                     "gte": gte, "lte": lte,
                     "sync_results": f"账号{new_phone}:今日修改步数 **{step}** " + message}
