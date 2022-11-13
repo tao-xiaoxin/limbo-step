@@ -1,0 +1,19 @@
+edition: 1.0.0        #  命令行YAML规范版本，遵循语义化版本（Semantic Versioning）规范
+name: FullStack       #  项目名称
+
+services:
+  nextjs-portal: #  服务名称
+    access: xxx-account1  #  秘钥别名，如果和项目的access相同，可省略
+    component: vue-component  # 组件名称
+    props: #  组件的属性值
+      src: ./frontend_src
+      url: url
+    actions: # 自定义执行逻辑
+      pre-deploy: # 在deploy之前运行
+        - run: npm install  # 要运行的命令行
+          path: ./backend_src # 命令行运行的路径
+        - component: fc build --use-docker  # 要运行的命令行
+      post-deploy: # 在deploy之后运行
+        - plugin: fc-warm
+          args:
+           
