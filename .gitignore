@@ -116,7 +116,7 @@ dmypy.json
 .pyre/
 
 #ide
-.idea/
+.idea
 test/*
 test.py
 docs/account/file_account.csv
