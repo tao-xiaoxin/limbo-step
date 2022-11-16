@@ -1,7 +1,7 @@
 import os
 from flask import Flask
-from ..applications.views import init_view
-from ..configs.config import config
+from applications.views import init_view
+from configs.config import config
 
 
 def create_app(config_name=None):

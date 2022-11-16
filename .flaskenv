@@ -16,3 +16,6 @@ SECRET_KEY='v6%h-2bpxret#!&o231izhkf-$ox)bglsbr-2pxkr0jk4-ss14'
 
 # 推送加配置
 PLUS_TOKEN = b1a5bdb3585144e7b1c08b4a746b9551
+# 云函数开启境外加速
+GLOBAL_ACCELERATOR_NA=true
+SERVERLESS_PLATFORM_VENDOR=tencent

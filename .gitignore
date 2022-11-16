@@ -121,3 +121,4 @@ test/*
 test.py
 docs/account/file_account.csv
 logs/*
+.s/*

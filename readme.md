@@ -43,18 +43,11 @@ flask 2.2.2 +	Python 3.10 +  APScheduler 定时任务
 ```
 limbo-step
 ├─applications  # 应用
-│  ├─configs  # 配置文件
-│  │  ├─ common.py  # 普通配置
-│  │  └─ config.py  # 配置文件对象
-│  ├─extensions  # 注册插件
-│  ├─models  # 数据模型
-│  ├─static  # 静态资源文件
-│  ├─templates  # 静态模板文件
 │  └─views  # 视图部分
-│     ├─admin  # 后台管理视图模块
-│     └─index  # 前台视图模块
+├─configs  # 配置文件
 ├─docs  # 文档说明（占坑）
-├─migrations  # 迁移文件记录
+├─templates  # 静态模板文件
+├─static     # 静态资源文件
 ├─requirement  # 依赖文件
 ├─libs # 第三方包
 ├─test # 测试文件夹（占坑）
@@ -72,7 +65,7 @@ limbo-step
 git clone https://github.com/tao-xiaoxin/limbo-step.git
 
 # 安 装
-pip install -r requirement\requirement-dev.txt
+pip install -r requirements.txt
 
 # 配 置
 cp .flaskenv .env
@@ -101,10 +94,33 @@ flask run
 
 ```bash
 # 运行项目
-bash start.sh
+chmod -777 scf_bootstrap
+bash scf_bootstrap
+```
+
+### 使用腾讯云serverless
+```bash
+# 安装serverless
+npm install -g serverless
+
+# 部署limbo-step
+scf deploy
 
 ```
 
+### 使用阿里云serverless
+```bash
+# 安装serverless
+npm install -g @serverless-devs/s
+# 部署limbo-step
+s deploy -y 
+```
+
+### 预览项目
+
+|                        |                        |
+|------------------------|------------------------|
+| ![](docs/assets/8.jpg) | ![](docs/assets/2.jpg) |
 
 ## 注意事项
 
@@ -120,9 +136,9 @@ bash start.sh
 
 6. 只有关联了[推送加]，才能推送步数到微信
 
-### 预览项目
-
-|                        |                        |
-|------------------------|------------------------|
-| ![](docs/assets/8.jpg) | ![](docs/assets/2.jpg) |
+### 参考资料:
+1. [腾讯云serverless安装环境](https://www.tencentcloud.com/zh/document/product/1040/36249)
+2. [腾讯云serverless远程开发调试](https://cloud.tencent.com/document/product/583/45474)
+3. [阿里云serverless常用命令](https://docs.serverless-devs.com/fc/readme)
+4. [阿里云serverless工具安装](https://docs.serverless-devs.com/serverless-devs/quick_start#%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85)
 
