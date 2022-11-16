@@ -1,0 +1,32 @@
+{
+  "domainName": "flask.limbo-step-app.1094466612376052.cn-shanghai.fc.devsapp.net",
+  "accountId": "1094466612376052",
+  "protocol": "HTTP",
+  "certConfig": {
+    "certName": null,
+    "privateKey": null,
+    "certificate": null
+  },
+  "tlsConfig": {
+    "minVersion": null,
+    "maxVersion": null,
+    "cipherSuites": null
+  },
+  "apiVersion": "2016-08-15",
+  "routeConfig": {
+    "routes": [
+      {
+        "path": "/*",
+        "accountId": null,
+        "serviceName": "limbo-step-app",
+        "functionName": "flask",
+        "qualifier": null,
+        "methods": [
+          "GET"
+        ]
+      }
+    ]
+  },
+  "createdTime": "2022-11-16T00:46:53Z",
+  "lastModifiedTime": "2022-11-16T00:46:53Z"
+}

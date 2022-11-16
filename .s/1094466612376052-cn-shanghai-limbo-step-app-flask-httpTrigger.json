@@ -1,0 +1,25 @@
+{
+  "statefulConfig": {
+    "triggerName": "httpTrigger",
+    "description": "",
+    "triggerId": "b210e721-ac7f-4f24-84e0-eca56226d11f",
+    "sourceArn": null,
+    "triggerType": "http",
+    "invocationRole": null,
+    "qualifier": null,
+    "urlInternet": "https://flask-limbo-step-app-bxnmqejdbv.cn-shanghai.fcapp.run",
+    "urlIntranet": "https://flask-limbo-step-app-bxnmqejdbv.cn-shanghai-vpc.fcapp.run",
+    "triggerConfig": {
+      "methods": [
+        "GET"
+      ],
+      "authType": "anonymous",
+      "disableURLInternet": false
+    },
+    "createdTime": "2022-11-16T00:46:52Z",
+    "lastModifiedTime": "2022-11-16T00:46:52Z",
+    "status": null,
+    "targetArn": null,
+    "name": "httpTrigger"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "statefulConfig": {
+    "functionId": "a798d417-92bc-4178-aa56-c0fa0d24d634",
+    "functionName": "flask",
+    "description": "Serverless Devs Web Framework Function",
+    "runtime": "python3.9",
+    "handler": "index.app",
+    "timeout": 60,
+    "initializer": "",
+    "initializationTimeout": 3,
+    "codeSize": 1848010,
+    "codeChecksum": "15628360299402128002",
+    "memorySize": 128,
+    "gpuMemorySize": null,
+    "environmentVariables": {},
+    "createdTime": "2022-11-16T00:46:52Z",
+    "lastModifiedTime": "2022-11-16T00:46:52Z",
+    "instanceConcurrency": 1,
+    "instanceSoftConcurrency": null,
+    "customContainerConfig": null,
+    "caPort": null,
+    "instanceType": "e1",
+    "layers": null,
+    "layersArnV2": null,
+    "instanceLifecycleConfig": {
+      "preFreeze": {
+        "handler": "",
+        "timeout": 3
+      },
+      "preStop": {
+        "handler": "",
+        "timeout": 3
+      }
+    },
+    "customDNS": null,
+    "customRuntimeConfig": null,
+    "customHealthCheckConfig": null,
+    "name": "flask"
+  }
+}
