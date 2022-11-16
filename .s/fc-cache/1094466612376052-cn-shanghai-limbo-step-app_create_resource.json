@@ -1,9 +1,0 @@
-{
-  "serviceName": "limbo-step-app",
-  "functionNames": [
-    "limbo-step-app/flask"
-  ],
-  "domains": [
-    "flask.limbo-step-app.1094466612376052.cn-shanghai.fc.devsapp.net"
-  ]
-}
