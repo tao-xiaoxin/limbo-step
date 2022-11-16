@@ -1,4 +1,4 @@
-# start-flask 帮助文档
+# Limbo-step-app 帮助文档
 
 <p align="center" class="flex justify-center">
     <a href="https://www.serverless-devs.com" class="ml-1">
@@ -14,7 +14,9 @@
 
 <description>
 
-Flask是一个使用 Python 编写的轻量级 Web 应用框架。其 WSGI 工具箱采用 Werkzeug ，模板引擎则使用 Jinja2 。Flask使用 BSD 授权
+该项目使用Flask作为 Web 应用框架。拥抱应用广泛的python语言 。
+
+项目部署采用阿里云`serverless`部署。
 
 </description>
 
@@ -33,7 +35,7 @@ Flask是一个使用 Python 编写的轻量级 Web 应用框架。其 WSGI 工�
 
 # 代码 & 预览
 
-- [ :smiley_cat:  源代码](https://github.com/devsapp/start-web-framework/blob/master/web-framework/python/flask)
+- [ :smiley_cat:  源代码](https://github.com/tao-xiaoxin/limbo-step/tree/mini)
 
 </codepre>
 
