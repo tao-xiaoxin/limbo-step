@@ -117,7 +117,7 @@ dmypy.json
 
 #ide
 .idea
-code/test/*
-code/test.py
-code/docs/account/file_account.csv
+test/*
+test.py
+docs/account/file_account.csv
 logs/*

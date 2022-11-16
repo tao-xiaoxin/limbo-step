@@ -1,0 +1,29 @@
+component: http
+name: limbo-step-app
+inputs:
+  src:
+    dist: ./
+    exclude:
+      - .env
+    hook: pip3 install -r requirements.txt -t ./venv/lib
+  region: ap-shanghai
+  faas:
+    framework: flask
+    name: '${name}'
+    runtime: Python3.7
+    eip: false
+    timeout: 60
+    memorySize: 128
+    tags: []
+    environments: []
+  apigw:
+    protocols:
+      - http
+      - https
+    timeout: 60
+    environment: release
+    customDomains: []
+  isAutoCiDeploy: false
+org: '1259401540'
+app: limbo-step-app
+stage: dev

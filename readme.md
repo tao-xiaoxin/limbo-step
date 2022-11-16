@@ -1,83 +1,128 @@
-# Limbo-step-app 帮助文档
+<div align="center">
+<br/>
+<br/>
+  <h1 align="center">
+    Limbo Microstep
+  </h1>
+  <h4 align="center">
+    千 里 之 行 , 始 于 足 下
+  </h4> 
 
-<p align="center" class="flex justify-center">
-    <a href="https://www.serverless-devs.com" class="ml-1">
-    <img src="http://editor.devsapp.cn/icon?package=start-flask&type=packageType">
-  </a>
-  <a href="http://www.devsapp.cn/details.html?name=start-flask" class="ml-1">
-    <img src="http://editor.devsapp.cn/icon?package=start-flask&type=packageVersion">
-  </a>
-  <a href="http://www.devsapp.cn/details.html?name=start-flask" class="ml-1">
-    <img src="http://editor.devsapp.cn/icon?package=start-flask&type=packageDownload">
-  </a>
+  [预 览](http://flask.pearadmin.com)   |   [官 网](http://www.taoxiaoxin.club/)   |   [社区](http://www.taoxiaoxin.club/)
+
+
+<p align="center">
+    <a href="#">
+        <img src="https://img.shields.io/badge/Limbo%20Microstep-1.0.0-green" alt="Limbo Microstep Version">
+    </a>
+    <a href="#">
+        <img src="https://img.shields.io/badge/Python-3.10+-green.svg" alt="Python Version">
+    </a>
+      <a href="#">
+        <img src="https://img.shields.io/badge/Flask-2.2.2+-green.svg" alt="Mysql Version">
+    </a>
 </p>
+</div>
 
-<description>
+<div align="center">
+  <img  width="92%" style="border-radius:10px;margin-top:20px;margin-bottom:20px;box-shadow: 2px 0 6px gray;" src="https://s2.loli.net/2022/09/16/GWqYclejZFTvyEm.jpg" />
+</div>
 
-该项目使用Flask作为 Web 应用框架。拥抱应用广泛的python语言 。
-
-项目部署采用阿里云`serverless`部署。
-
-</description>
-
-<table>
-
-## 前期准备
-使用该项目，推荐您拥有以下的产品权限 / 策略：
-
-| 服务/业务 | 函数计算 |
-| --- |  --- |
-| 权限/策略 | AliyunFCFullAccess |
-
-</table>
-
-<codepre id="codepre">
-
-# 代码 & 预览
-
-- [ :smiley_cat:  源代码](https://github.com/tao-xiaoxin/limbo-step/tree/mini)
-
-</codepre>
-
-<deploy>
-
-## 部署 & 体验
-
-<appcenter>
-
--  :fire:  通过 [Serverless 应用中心](https://fcnext.console.aliyun.com/applications/create?template=start-flask) ，
-[![Deploy with Severless Devs](https://img.alicdn.com/imgextra/i1/O1CN01w5RFbX1v45s8TIXPz_!!6000000006118-55-tps-95-28.svg)](https://fcnext.console.aliyun.com/applications/create?template=start-flask)  该应用。 
-
-</appcenter>
-
-- 通过 [Serverless Devs Cli](https://www.serverless-devs.com/serverless-devs/install) 进行部署：
-    - [安装 Serverless Devs Cli 开发者工具](https://www.serverless-devs.com/serverless-devs/install) ，并进行[授权信息配置](https://www.serverless-devs.com/fc/config) ；
-    - 初始化项目：`s init start-flask -d start-flask`   
-    - 进入项目，并进行项目部署：`cd start-flask && s deploy -y`
-
-</deploy>
-
-<appdetail id="flushContent">
-
-# 应用详情
+#### 项目简介
+本项目基于 Pear Admin Flask 前端页面，拥抱应用广泛的python语言
 
 
-本项目是将 Python Web 框架中，非常受欢迎的 Flask 框架，部署到阿里云 Serverless 平台（函数计算 FC）。
+#### 项目架构
+flask 2.2.2 +	Python 3.10 +  APScheduler 定时任务
 
-> Flask是一个使用 Python 编写的轻量级 Web 应用框架。其 WSGI 工具箱采用 Werkzeug ，模板引擎则使用 Jinja2 。Flask使用 BSD 授权。
+#### 版本特性:
+相较于上个版本更加轻量,只需要将账号导入到csv文件中即可.
 
-通过 Serverless Devs 开发者工具，您只需要几步，就可以体验 Serverless 架构，带来的降本提效的技术红利。
+####  项目结构
 
-本案例应用是一个非常简单的 Hello World 案例，部署完成之后，您可以看到系统返回给您的案例地址，例如：
+```
+limbo-step
+├─applications  # 应用
+│  ├─configs  # 配置文件
+│  │  ├─ common.py  # 普通配置
+│  │  └─ config.py  # 配置文件对象
+│  ├─extensions  # 注册插件
+│  ├─models  # 数据模型
+│  ├─static  # 静态资源文件
+│  ├─templates  # 静态模板文件
+│  └─views  # 视图部分
+│     ├─admin  # 后台管理视图模块
+│     └─index  # 前台视图模块
+├─docs  # 文档说明（占坑）
+├─migrations  # 迁移文件记录
+├─requirement  # 依赖文件
+├─libs # 第三方包
+├─test # 测试文件夹（占坑）
+└─.env # 项目的配置文件
 
-![图片alt](https://serverless-article-picture.oss-cn-hangzhou.aliyuncs.com/1644567788251_20220211082308412077.png)
+```
+## Limbo Microstep 使用指南
 
-此时，打开案例地址，就可以看到测试的应用详情：
+<br />
 
-![图片alt](https://serverless-article-picture.oss-cn-hangzhou.aliyuncs.com/1644567807662_20220211082327817140.png)
+#### 项目安装
+
+```bash
+# 下 载
+git clone https://github.com/tao-xiaoxin/limbo-step.git
+
+# 安 装
+pip install -r requirement\requirement-dev.txt
+
+# 配 置
+cp .flaskenv .env
+
+```
+
+#### Venv 安装
+
+```bash
+python -m venv venv
+```
+
+#### 运行项目
+
+```bash
+
+#执行命令启动项目 
+
+flask run 
+```
 
 
+### Limbo Microstep 部署指南
 
-</appdetail>
+#### 运行项目
 
-<devgroup>
+```bash
+# 运行项目
+bash start.sh
+
+```
+
+
+## 注意事项
+
+1. 每天早上8点定时同步!
+
+2. (pushplus)推送+注册地址 [点我](https://www.pushplus.plus/login.html)
+
+3. 如果支付宝没有更新步数,到小米运动->设置->账号->注销账号->清空数据,然后重新登录,重新绑定第三方
+
+4. 小米运动不会更新步数，只有关联的会同步！！！！！
+
+5. 请注意，账号不是 [小米账号]，而是 [小米运动] 的账号。
+
+6. 只有关联了[推送加]，才能推送步数到微信
+
+### 预览项目
+
+|                        |                        |
+|------------------------|------------------------|
+| ![](docs/assets/8.jpg) | ![](docs/assets/2.jpg) |
+
