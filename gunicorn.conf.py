@@ -1,11 +1,11 @@
 import os
 import multiprocessing
 
-bind = '0.0.0.0:65535'
+bind = '0.0.0.0:9000'
 backlog = 512
 chdir = os.path.dirname(os.path.abspath(__file__))
 timeout = 30
-worker_class = 'sync'
+worker_class = 'gevent'  # 使用gevent模式，还可以使用sync 模式，默认的是sync模式
 
 workers=2
 threads = 2
