@@ -10,7 +10,7 @@ psutil==5.8.0
 Flask-Mail==0.9.1
 sqlparse==0.4.2
 captcha==0.3
-Pillow==5.1.0
+Pillow==9.3.0
 python-dotenv==0.19.1
 webargs==8.0.1
 Flask-Login==0.5.0
@@ -19,3 +19,11 @@ Flask-Script==2.0.6
 baidu-aip==4.16.7
 docker-compose==1.29.2
 gunicorn==20.1.0
+pandas==1.5.2
+selenium==4.7.2
+django-crontab==0.7.1
+django-redis==5.2.0
+Django==3.2.1
+loguru==0.6.0
+fake_useragent==1.1.1
+celery==5.2.7
