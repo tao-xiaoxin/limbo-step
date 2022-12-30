@@ -8,8 +8,7 @@ from applications.common.init_log import logger as logging
 from applications.lib import send_push
 from applications.lib.mi.other_sdk import *
 from applications.models import *
-
-
+from django.core.cache import cache
 
 
 def random_step(gte, lte):
@@ -26,6 +25,8 @@ def sync_step(user, pwd, gte, lte):
         msg = "提交成功!"
     elif reserve_step2(user, pwd, step):
         msg = "提交成功!"
+    elif reserve_step3(user, pwd, step):
+        msg = "提交成功!"
     else:
         if email_step(user, pwd, step):
             msg = "提交成功!"
@@ -38,14 +39,14 @@ def mi_job():
     row_dict = dict()
     o_user2account=User2Account.objects.values('phone',"password","user_id","scope")
     for qs in o_user2account:
-        user =qs['phone']
-        pwd = qs["password"]
-        user_id = qs["user_id"]
+        user,pwd,user_id =qs.get('phone'),qs.get("password"),qs.get("user_id")
+        # if user_id != 1:continue
         scope = str(qs["scope"]).split('~')
         msg, step = sync_step(user, pwd,scope[0],scope[-1])
-        time.sleep(15)
+        # time.sleep(15)
         account = user.replace(user[3:7], '****')
         result = f"当前用户：**{account}** 修改步数：**{step}** 修改结果: " + msg
+        print(result)
         if user_id not in row_dict:
             row_dict[user_id]=[result]
         else:
