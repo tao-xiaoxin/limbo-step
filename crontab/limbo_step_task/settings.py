@@ -86,6 +86,26 @@ DATABASES = {
     }
 }
 
+# ================================================= #
+# redis 数据库配置
+# ================================================= #
+CACHES = {
+    # django存缓默认位置,redis 0号库
+    # default: 连接名称,
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:63790/0",
+        'TIMEOUT': 15,  # default expire time per api call
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "SOCKET_CONNECT_TIMEOUT": 5,  # in seconds
+            "SOCKET_TIMEOUT": 60,  # r/w timeout in seconds
+            'MAX_ENTRIES': 1000000,
+            'KEY_PREFIX': 'recruit-',
+        }
+    }
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
