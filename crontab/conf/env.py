@@ -10,3 +10,6 @@ MYSQL_DATABASE = "StepDatabase"
 
 # 日志文件配置
 log_file = 'limbo-step-task.log'
+  
+#chrome驱动路径配置
+DRIVER_PATH= r'/usr/bin/chromedriver'
